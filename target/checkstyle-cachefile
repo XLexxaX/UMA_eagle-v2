@@ -1,0 +1,19 @@
+#Tue Oct 16 17:45:19 CEST 2018
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\util\\DataGenerator.java=1535915146458
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\controller\\IPipeline.java=1535915146227
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\io\\cache\\ICache.java=1535915146277
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\io\\cache\\FileCache.java=1535915146276
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\execution\\planning\\planner\\Planner.java=1535915146272
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\execution\\planning\\planner\\IPlanner.java=1535915146270
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\util\\Clonable.java=1535915146457
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\execution\\rewriter\\Rewriter.java=1535915146274
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\io\\mapping\\IMapping.java=1535915146290
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\measures\\measure\\AMeasure.java=1535915146360
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\io\\parser\\IParser.java=1535915146295
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\measures\\measure\\space\\ManhattanMeasure.java=1535915146387
+configuration*?=C6FC7EDF3752F45E9616E2BE9886FB922C888990
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\io\\config\\IConfiguration.java=1535915146280
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\measures\\measure\\string\\StringMeasure.java=1535915146395
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\measures\\measure\\temporal\\ITemporalMeasure.java=1535915146396
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\datastrutures\\LogicOperator.java=1535915146232
+B\:\\Development\\limes3\\limes\\limes-core\\src\\main\\java\\org\\aksw\\limes\\core\\ml\\algorithm\\eagle\\util\\TerminationCriteria.java=1535915146444
