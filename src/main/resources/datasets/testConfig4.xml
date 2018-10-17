@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LIMES SYSTEM "limes.dtd">
+<LIMES>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/1999/02/22-rdf-syntax-ns#</NAMESPACE>
+        <LABEL>rdf</LABEL>
+    </PREFIX>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/2002/07/owl#</NAMESPACE>
+        <LABEL>owl</LABEL>
+    </PREFIX>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/2001/XMLSchema#</NAMESPACE>
+        <LABEL>schema</LABEL>
+    </PREFIX>
+	
+    <SOURCE>
+        <ID>cat</ID>
+        <ENDPOINT>C:/Users/Alexander/Desktop/data_phones/phones_catalog_embeddings.nt</ENDPOINT>
+        <VAR>?y</VAR>
+        <PAGESIZE>-1</PAGESIZE>
+        <RESTRICTION>?y</RESTRICTION>
+        <PROPERTY>rdf:type</PROPERTY>
+		<PROPERTY>rdf:ram0</PROPERTY>
+<PROPERTY>rdf:ram1</PROPERTY>
+<PROPERTY>rdf:ram2</PROPERTY>
+<PROPERTY>rdf:ram3</PROPERTY>
+<PROPERTY>rdf:ram4</PROPERTY>
+<PROPERTY>rdf:memory0</PROPERTY>
+<PROPERTY>rdf:memory1</PROPERTY>
+<PROPERTY>rdf:memory2</PROPERTY>
+<PROPERTY>rdf:memory3</PROPERTY>
+<PROPERTY>rdf:memory4</PROPERTY>
+<PROPERTY>rdf:brand0</PROPERTY>
+<PROPERTY>rdf:brand1</PROPERTY>
+<PROPERTY>rdf:brand2</PROPERTY>
+<PROPERTY>rdf:brand3</PROPERTY>
+<PROPERTY>rdf:brand4</PROPERTY>
+<PROPERTY>rdf:phone_type0</PROPERTY>
+<PROPERTY>rdf:phone_type1</PROPERTY>
+<PROPERTY>rdf:phone_type2</PROPERTY>
+<PROPERTY>rdf:phone_type3</PROPERTY>
+<PROPERTY>rdf:phone_type4</PROPERTY>
+        <TYPE>NT</TYPE>
+    </SOURCE>
+    <TARGET>
+        <ID>off</ID>
+        <ENDPOINT>C:/Users/Alexander/Desktop/data_phones/phones_offers_embeddings.nt</ENDPOINT>
+        <VAR>?x</VAR>
+        <PAGESIZE>-1</PAGESIZE>
+        <RESTRICTION>?x</RESTRICTION>
+		<PROPERTY>rdf:type</PROPERTY>
+		<PROPERTY>rdf:ram0</PROPERTY>
+<PROPERTY>rdf:ram1</PROPERTY>
+<PROPERTY>rdf:ram2</PROPERTY>
+<PROPERTY>rdf:ram3</PROPERTY>
+<PROPERTY>rdf:ram4</PROPERTY>
+<PROPERTY>rdf:memory0</PROPERTY>
+<PROPERTY>rdf:memory1</PROPERTY>
+<PROPERTY>rdf:memory2</PROPERTY>
+<PROPERTY>rdf:memory3</PROPERTY>
+<PROPERTY>rdf:memory4</PROPERTY>
+<PROPERTY>rdf:brand0</PROPERTY>
+<PROPERTY>rdf:brand1</PROPERTY>
+<PROPERTY>rdf:brand2</PROPERTY>
+<PROPERTY>rdf:brand3</PROPERTY>
+<PROPERTY>rdf:brand4</PROPERTY>
+<PROPERTY>rdf:phone_type0</PROPERTY>
+<PROPERTY>rdf:phone_type1</PROPERTY>
+<PROPERTY>rdf:phone_type2</PROPERTY>
+<PROPERTY>rdf:phone_type3</PROPERTY>
+<PROPERTY>rdf:phone_type4</PROPERTY>
+        <TYPE>NT</TYPE>
+    </TARGET>
+    
+    <MLALGORITHM>
+        <NAME>EAGLE</NAME>
+        <TYPE>supervised active</TYPE>
+        <TRAINING>C:/Users/Alexander/Desktop/data_phones/alignment.nt</TRAINING>
+		<PARAMETER>
+		<NAME>inquiry_size</NAME>
+		<VALUE>5</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>population</NAME>
+		<VALUE>500</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>preserve_fittest</NAME>
+		<VALUE>false</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>generations</NAME>
+		<VALUE>1</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>elitism</NAME>
+		<VALUE>10</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>reproduction_rate</NAME>
+		<VALUE>0.0</VALUE>
+		</PARAMETER>
+    </MLALGORITHM>
+    <ACCEPTANCE>
+        <THRESHOLD>0.001</THRESHOLD>
+        <FILE>acceptance.nt</FILE>
+        <RELATION>owl:sameAs</RELATION>
+    </ACCEPTANCE>
+    <REVIEW>
+        <THRESHOLD>0.0000000000001</THRESHOLD>
+        <FILE>review.nt</FILE>
+        <RELATION>owl:sameAs</RELATION>
+    </REVIEW>
+       <EXECUTION>
+          <REWRITER>default</REWRITER>
+          <PLANNER>default</PLANNER>
+          <ENGINE>default</ENGINE>
+         </EXECUTION>
+    <OUTPUT>NT</OUTPUT>
+</LIMES>

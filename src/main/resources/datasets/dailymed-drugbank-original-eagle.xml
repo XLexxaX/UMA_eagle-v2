@@ -8,7 +8,7 @@
 	</PREFIX>
 	<SOURCE>
 		<ID>daily</ID>
-		<ENDPOINT>datasets/dailymed-drugbank-ingredients/source2.csv</ENDPOINT>
+		<ENDPOINT>B:/Development/limes3/limes/limes-core/src/main/resources/datasets/dailymed-drugbank-ingredients/source2.csv</ENDPOINT>
 		<VAR>?x</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
@@ -17,7 +17,7 @@
 	</SOURCE>
 	<TARGET>
 		<ID>drugbank</ID>
-		<ENDPOINT>datasets/dailymed-drugbank-ingredients/target2.csv</ENDPOINT>
+		<ENDPOINT>B:/Development/limes3/limes/limes-core/src/main/resources/datasets/dailymed-drugbank-ingredients/target2.csv</ENDPOINT>
 		<VAR>?y</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
@@ -28,14 +28,14 @@
 	<MLALGORITHM>
         <NAME>EAGLE</NAME>
         <TYPE>supervised active</TYPE>
-        <TRAINING>datasets/dailymed-drugbank-ingredients/reference2.csv</TRAINING>
+        <TRAINING>B:/Development/limes3/limes/limes-core/src/main/resources/datasets/dailymed-drugbank-ingredients/reference2.nt</TRAINING>
 		<PARAMETER>
 		<NAME>inquiry_size</NAME>
 		<VALUE>10</VALUE>
 		</PARAMETER>
 		<PARAMETER>
 		<NAME>population</NAME>
-		<VALUE>100</VALUE>
+		<VALUE>10</VALUE>
 		</PARAMETER>
 		<PARAMETER>
 		<NAME>generations</NAME>
@@ -48,6 +48,14 @@
 		<PARAMETER>
 		<NAME>crossover_rate</NAME>
 		<VALUE>0.6</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>elitism</NAME>
+		<VALUE>5</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>reproduction_rate</NAME>
+		<VALUE>0.0</VALUE>
 		</PARAMETER>
     </MLALGORITHM>
 	<ACCEPTANCE>
