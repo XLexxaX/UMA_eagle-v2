@@ -58,6 +58,7 @@ public class Configuration implements IConfiguration {
     protected MLImplementationType mlImplementationType = MLImplementationType.UNSUPERVISED;
     protected String mlTrainingDataFile = null;
     protected EvaluatorType mlPseudoFMeasure = null;
+    
 
     public Configuration() {
     }

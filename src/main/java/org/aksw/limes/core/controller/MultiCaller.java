@@ -15,7 +15,6 @@ import org.apache.commons.cli.CommandLine;
 
 public class MultiCaller {
 
-	
 	public void run(String[] args) {
 
 		try {
@@ -28,64 +27,50 @@ public class MultiCaller {
 			e.printStackTrace();
 		}
 
-		double aT= exec(args, (int) 170, 0.1, 5); 
-		//exec(args, 75, 0.1, 1);
+		exec(args, 55);
 	}
-	
-	public double exec(String[] args, int iterations, double startVal, int testRounds) {
-		
-		double aT = startVal;
 
-			TrainTestResults[] ttr = new TrainTestResults[5];
-			for (int j = 0; j < testRounds; j++) {
-				 
-				TrainTestResults[] ttr2 = new TrainTestResults[50];
-				for (int i = 0; i < 1; i++) {
+	public void exec(String[] args, int iterations) {
 
-					try {
-						String outString = "\nTest #" + (i + 1) + " for (i	terations=" + iterations + ", accept-threshold=" + aT + "):\n";
-						Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-								outString.getBytes(), StandardOpenOption.APPEND);
-					} catch (IOException e) {
-						e.printStackTrace();
-						// exception handling left as an exercise for the reader
-					}
+		String[] configFiles = new String[] {
+				/*
+				 * "B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-4props-50pop-f-original.xml",
+				 * "B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-10props-50pop-f-original.xml",
+				 * "B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-allprops-50pop-f-original.xml",
+				 */
 
-					Controller ctr = new Controller();
-					ttr2[i] = ctr.run(args, iterations, aT);
-					
+				"B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-4props-50pop-f-alternative.xml",
+				"B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-10props-50pop-f-alternative.xml",
+				"B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-allprops-50pop-f-alternative.xml",
+
+				"B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-4props-50pop-simplef-alternative.xml",
+				"B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-10props-50pop-simplef-alternative.xml",
+				"B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-allprops-50pop-simplef-alternative.xml",
+				"B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-allprops-10pop-simplef-alternative.xml" };
+
+		for (int i = 0; i < configFiles.length; i++) {
+
+			for (int j = 0; j < 5; j++) {
+
+				try {
+					String outString = "\n\n\n --- ( " + configFiles[i].split("/")[configFiles[i].split("/").length - 1]
+							+ " | " + (j+1) + " ) ---\n";
+					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"), outString.getBytes(),
+							StandardOpenOption.APPEND);
+				} catch (IOException e) {
+					e.printStackTrace();
+					// exception handling left as an exercise for the reader
 				}
-				/*ttr[j] = ttr2[0];
-				for (int i = 1; i < 1; i++) {
-					ttr[j].testResult.put("f", new Double(ttr[j].testResult.get("f")+ttr2[i].testResult.get("f")));
-				}
-				ttr[j].testResult.put("f", new Double(ttr[j].testResult.get("f")/5.0));*/
-				
-				//aT /= 10;
+
+				Controller ctr = new Controller();
+				ctr.run(new String[] { configFiles[i] }, iterations, 0.1);
+
 			}
-			/*int maxRun = 0;
-			double maxF = ttr[0].testResult.get("f");
-			for (int i = 1; i < testRounds; i++) {
-				if (maxF < ttr[i].testResult.get("f")) {
-					maxF = ttr[i].testResult.get("f");
-					maxRun = i;
-				}
-			}*/
-			/*String endResult = "\nFound best mean result for run "+maxRun+" with acceptance-threshold="+(startVal*10.0/(10.0*(maxRun+1.0)));
-			try {
-				Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-						endResult.getBytes(), StandardOpenOption.APPEND);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}*/
-			
-			
-			return startVal;//(startVal*10.0/(10.0*(maxRun+1.0)));
-			
-			
+
+		}
+
 	}
-	
+
 	public static void main(String[] args) {
 		new MultiCaller().run(args);
 	}
