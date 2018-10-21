@@ -52,11 +52,12 @@ public class ActiveMLAlgorithm extends AMLAlgorithm {
     
     /**
      * @param oracleMapping mapping from the oracle
+     * @param gsbr 
      * @return wrap with results
      * @throws UnsupportedMLImplementationException if ML implementation is not supported
      */
-    public MLResults activeLearn(AMapping oracleMapping) throws UnsupportedMLImplementationException {
-        return getMl().activeLearn(oracleMapping);
+    public MLResults activeLearn(AMapping oracleMapping, GoldStandardBatchReader gsbr) throws UnsupportedMLImplementationException {
+        return getMl().activeLearn(oracleMapping, gsbr);
     }
 
 

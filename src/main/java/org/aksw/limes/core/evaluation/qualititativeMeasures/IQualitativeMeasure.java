@@ -21,4 +21,6 @@ public interface IQualitativeMeasure {
      */
     public double calculate(AMapping predictions, GoldStandard goldStandard);
 
+	public double calculateSimple(AMapping a_mapping, GoldStandard goldStandard);
+
 }

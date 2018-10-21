@@ -63,4 +63,10 @@ public class PseudoPrecision extends APseudoPRF {
         return p / q;
     }
 
+	@Override
+	public double calculateSimple(AMapping a_mapping, GoldStandard goldStandard) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -7,29 +7,29 @@
 		<LABEL>owl</LABEL>
 	</PREFIX>
 	<SOURCE>
-		<ID>daily</ID>
-		<ENDPOINT>B:/Development/limes3/limes/limes-core/src/main/resources/datasets/dailymed-drugbank-ingredients/source2.csv</ENDPOINT>
+		<ID>linkedmdb</ID>
+		<ENDPOINT>src/main/resources/datasets/dbpedia-linkedmdb/source2.csv</ENDPOINT>
 		<VAR>?x</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
-		<PROPERTY>name AS lowercase</PROPERTY>		
+		<PROPERTY>title AS lowercase->removebraces</PROPERTY>
+		<PROPERTY>director AS lowercase->removebraces</PROPERTY>	
 		<TYPE>CSV</TYPE>
 	</SOURCE>
 	<TARGET>
-		<ID>drugbank</ID>
-		<ENDPOINT>B:/Development/limes3/limes/limes-core/src/main/resources/datasets/dailymed-drugbank-ingredients/target2.csv</ENDPOINT>
+		<ID>dbpedia</ID>
+		<ENDPOINT>src/main/resources/datasets/dbpedia-linkedmdb/target2.csv</ENDPOINT>
 		<VAR>?y</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
-		<PROPERTY>name AS lowercase</PROPERTY>
+		<PROPERTY>title AS lowercase->removebraces</PROPERTY>
+		<PROPERTY>director AS lowercase->removebraces</PROPERTY>	
 		<TYPE>CSV</TYPE>
 	</TARGET>
 	
-	
-    <MLALGORITHM>
+	<MLALGORITHM>
         <NAME>EAGLE</NAME>
         <TYPE>supervised active</TYPE>
-        <TRAINING>B:/Development/limes3/limes/limes-core/src/main/resources/datasets/dailymed-drugbank-ingredients/reference2.csv</TRAINING>
 		<PARAMETER>
 		<NAME>inquiry_size</NAME>
 		<VALUE>5</VALUE>
@@ -44,17 +44,29 @@
 		</PARAMETER>
 		<PARAMETER>
 		<NAME>generations</NAME>
-		<VALUE>25</VALUE>
+		<VALUE>1</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>max_quality</NAME>
+		<VALUE>0.999999999</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>elitism</NAME>
+		<VALUE>5</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>reproduction_rate</NAME>
+		<VALUE>0.0</VALUE>
 		</PARAMETER>
     </MLALGORITHM>
 	<ACCEPTANCE>
-		<THRESHOLD>0.55</THRESHOLD>
-		<FILE>dailymed_drugbank_incredients_accepted.txt</FILE>
+		<THRESHOLD>0.91</THRESHOLD>
+		<FILE>dbpedia-linkedmdb_accepted.txt</FILE>
 		<RELATION>owl:sameAs</RELATION>
 	</ACCEPTANCE>
 	<REVIEW>
-		<THRESHOLD>0.4</THRESHOLD>
-		<FILE>dailymed_drugbank_incredients_reviewme.txt</FILE>
+		<THRESHOLD>0.8</THRESHOLD>
+		<FILE>dbpedia-linkedmdb_reviewme.txt</FILE>
 		<RELATION>owl:sameAs</RELATION>
 	</REVIEW>
 		<EXECUTION>

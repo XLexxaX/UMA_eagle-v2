@@ -2,6 +2,7 @@ package org.aksw.limes.core.controller;
 
 import static org.junit.Assert.fail;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -94,7 +95,6 @@ public class MLPipeline {
     				 	examples.setPredicate("http://www.w3.org/2002/07/owl#sameAs");
     				 } else { 
     					 nextExamples = mla.getNextExamples(5, gsbr);
-    					 examples.getMap().putAll(nextExamples.getMap());
         				 examples.setSize(examples.getSize()+5);
     				 }
     				 if (examples.getSize()> 140) {
@@ -121,9 +121,16 @@ public class MLPipeline {
                                      logger.error("Input did not match floating point number, please try again...");
                                  }
                              } while (!rated);
+                             if (examples.getMap().containsKey(s)) {
+                            	 examples.getMap().get(s).put(t, nextExamples.getMap().get(s).get(t));
+                             } else {
+                            	 HashMap<String, Double> tmp = new HashMap<>();
+                            	 tmp.put(t, nextExamples.getMap().get(s).get(t));
+                            	 examples.getMap().put(s, tmp);
+                             }
                          }
                      }
-                     mlm = mla.asActive().activeLearn(examples);
+                     mlm = mla.asActive().activeLearn(examples, gsbr);
                      //result = mla.predict(source, target, mlm);
                      
                      gsbr.eval(mlm.getMapping(), i, mlm.getLinkSpecification().getFullExpression() + "-" + mlm.getLinkSpecification().getThreshold());

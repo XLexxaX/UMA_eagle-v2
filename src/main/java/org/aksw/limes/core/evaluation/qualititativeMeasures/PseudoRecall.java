@@ -61,4 +61,10 @@ public class PseudoRecall extends APseudoPRF {
         double reference = (double) (goldStandard.sourceUris.size() + goldStandard.targetUris.size());
         return (q + values.size()) / reference;
     }
+
+	@Override
+	public double calculateSimple(AMapping a_mapping, GoldStandard goldStandard) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -30,6 +30,13 @@ public class Recall extends APRF implements IQualitativeMeasure {
             return 0;
 		return trueFalsePositiveReversed(predictions, goldStandard.referenceMappings, true)
 				/ (double) ((MemoryMapping) goldStandard.referenceMappings).getNumberofPositiveMappings();
+    } 
+    
+    public double calculateSimple(AMapping predictions, GoldStandard goldStandard) {
+        if (predictions.size() == 0)
+            return 0;
+		return trueFalsePositiveReversed(predictions, goldStandard.referenceMappings, true)
+				/ (double) ((MemoryMapping) goldStandard.referenceMappings).getNumberofPositiveMappings();
     }
 
 }

@@ -43,6 +43,9 @@ public class FMeasure extends APRF implements IQualitativeMeasure {
     public double recall(AMapping predictions, GoldStandard goldStandard) {
         return new Recall().calculate(predictions, goldStandard);
     }
+    public double recallSimple(AMapping predictions, GoldStandard goldStandard) {
+        return new Recall().calculateSimple(predictions, goldStandard);
+    }
 
     /** 
      * The method calculates the precision of the machine learning predictions compared to a gold standard
@@ -53,5 +56,20 @@ public class FMeasure extends APRF implements IQualitativeMeasure {
     public double precision(AMapping predictions, GoldStandard goldStandard) {
         return new Precision().calculate(predictions, goldStandard);
     }
+
+	public double precisionSimple(AMapping predictions, GoldStandard goldStandard) {
+		return new Precision().calculateSimple(predictions, goldStandard);
+	}
+
+	@Override
+	public double calculateSimple(AMapping predictions, GoldStandard goldStandard) {
+		 double p = precisionSimple(predictions, goldStandard);
+	     double r = recallSimple(predictions, goldStandard);
+
+	        if (p + r > 0d)
+	            return 2 * p * r / (p + r);
+	        else
+	            return 0d;
+	}
 
 }

@@ -33,4 +33,10 @@ public class AUC extends APRF implements IQualitativeMeasure {
         return 0;
     }
 
+	@Override
+	public double calculateSimple(AMapping a_mapping, GoldStandard goldStandard) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

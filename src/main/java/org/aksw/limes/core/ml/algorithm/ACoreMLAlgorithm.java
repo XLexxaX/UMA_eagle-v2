@@ -196,5 +196,16 @@ public abstract class ACoreMLAlgorithm {
         return targetCache;
     }
 
+	protected MLResults activeLearn(AMapping oracleMapping, GoldStandardBatchReader gsbr)
+			throws UnsupportedMLImplementationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	protected MLResults learn(AMapping trainingData, GoldStandardBatchReader gsbr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

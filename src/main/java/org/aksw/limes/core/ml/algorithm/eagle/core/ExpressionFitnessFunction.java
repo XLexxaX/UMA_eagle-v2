@@ -213,7 +213,8 @@ public class ExpressionFitnessFunction extends IGPFitnessFunction {
     private double getMeasure(AMapping a_mapping, AMapping reference, double crossProduct) {
         // These two statements are added by Mofeed to suite the change in QMeasure's new structure
         GoldStandard goldStandard = new GoldStandard(reference);
-        double quality = measure.calculate(a_mapping, goldStandard);
+        double quality = 0.0;
+        quality = measure.calculate(a_mapping, goldStandard);
         // TODO check
         return quality;
     }

@@ -54,6 +54,7 @@ public class Eagle extends ACoreMLAlgorithm {
 	// ======================= COMMON VARIABLES ======================
 	private IGPProgram allBest = null;
 	private IGPFitnessFunction fitness;
+
 	public IGPFitnessFunction getFitness() {
 		return fitness;
 	}
@@ -71,9 +72,11 @@ public class Eagle extends ACoreMLAlgorithm {
 	// ======================= PARAMETER NAMES =======================
 
 	protected static final String ALGORITHM_NAME = "Eagle";
-	
+
 	private final boolean logging = false;
-	
+	private ACache tsC;
+	private ACache ttC;
+
 	public static final String ELITISM = "elitism";
 	public static final String GENERATIONS = "generations";
 	public static final String PRESERVE_FITTEST = "preserve_fittest";
@@ -89,6 +92,7 @@ public class Eagle extends ACoreMLAlgorithm {
 	public static final String REPRODUCTION_RATE = "reproduction_rate";
 	public static final String CROSSOVER_RATE = "crossover_rate";
 	public static final String PSEUDO_FMEASURE = "pseudo_fmeasure";
+	public static final String SIMPLE_FITNESS = "simple_fitness";
 
 	public static final String MEASURE = "measure";
 	public static final String PROPERTY_MAPPING = "property_mapping";
@@ -118,22 +122,20 @@ public class Eagle extends ACoreMLAlgorithm {
 	}
 
 	@Override
-	protected MLResults learn(AMapping trainingData) {
+	protected MLResults learn(AMapping trainingData, GoldStandardBatchReader gsbr) {
 
-
-
-
-		
 		MLResults result = null;
 		int elitism = (Integer) Integer.parseInt(getParameter(ELITISM).toString());
 		if (elitism > 0) {
-			
+
 			if (logging) {
 				for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
 					try {
 						LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
 						Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-								(ls.getFullExpression().toString()+"-" + ls.getThreshold() + "-" + ls.getQuality() + "\n").getBytes(), StandardOpenOption.APPEND);
+								(ls.getFullExpression().toString() + "-" + ls.getThreshold() + "-" + ls.getQuality()
+										+ "\n").getBytes(),
+								StandardOpenOption.APPEND);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -141,104 +143,46 @@ public class Eagle extends ACoreMLAlgorithm {
 				}
 				try {
 					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-							("\n1111111111111\n".toString()+"\n").getBytes(), StandardOpenOption.APPEND);
+							("\n1111111111111\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				}
-			
-			PreparedGeneration prepgen = preserve_fittest();
-			
-			if (logging) {
-				for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
-					try {
-						LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
-						Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-								(ls.getFullExpression().toString()+"-" + ls.getThreshold() + "-" + ls.getQuality() + "\n").getBytes(), StandardOpenOption.APPEND);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				try {
-					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-							("\n222222222222222\n".toString()+"\n").getBytes(), StandardOpenOption.APPEND);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				}
-			
-			try {
-				setUp(trainingData);
-			} catch (InvalidConfigurationException e) {
-				e.printStackTrace();
-				logger.error(e.getMessage());
-				return null;
 			}
 
-			turn++;
-			fitness.addToReference(extractPositiveMatches(trainingData));
-			fitness.fillCachesIncrementally(trainingData);
-
-			Integer nGen = (Integer) Integer.parseInt(getParameter(GENERATIONS).toString());
-
-			
-			
-			for (int gen = 1; gen <= nGen; gen++) {
-				gp.evolve();
-
-					
-			}
-
-			for (int i = 0; i < gp.getGPPopulation().getPopSize(); i++) {
-				if (i<elitism) {
-					gp.getGPPopulation().setGPProgram(i, (GPProgram) prepgen.getPreserved_generation().getGPProgram(i).clone());
-					//gp.getGPPopulation().setGPProgram(i, gp.getGPPopulation().getGPProgram(i));//prepgen.getChanged_generation().getGPPopulation().getGPProgram(i-elitism));
-				} //else {
-				//}
-				
-
-				
-			}
-			//gp.getGPPopulation().sortByFitness();
-			quicksort(gp.getGPPopulation());
-			
-			GPProgram fittestnow = (GPProgram) gp.getGPPopulation().getGPProgram(0);//(GPProgram) prepgen.getPreserved_generation().getGPProgram(0);
-
-			ACache ttC = null;
-			ACache tsC = null;
-			
-			if (fitness.getClass().getName().equals("org.aksw.limes.core.ml.algorithm.eagle.core.ExpressionFitnessFunction")) {
+			if (fitness.getClass().getName()
+					.equals("org.aksw.limes.core.ml.algorithm.eagle.core.ExpressionFitnessFunction") && (Boolean) Boolean.parseBoolean(getParameter(SIMPLE_FITNESS).toString())) {
 				ExpressionFitnessFunction eff = ((ExpressionFitnessFunction) fitness);
 				eff.setUseFullCaches(false);
 				eff.trimKnowledgeBases(trainingData);
 				tsC = eff.getTrimmedSourceCache();
 				ttC = eff.getTrimmedTargetCache();
 			}
-			
-			
+
+			PreparedGeneration prepgen = preserve_fittest(gsbr);
+
+			if (logging) {
+				for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
 					try {
+						LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
 						Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-								("##########:" + fitness.calculateRawMeasure(fittestnow) + "\n").getBytes(), StandardOpenOption.APPEND);
+								(ls.getFullExpression().toString() + "-" + ls.getThreshold() + "-" + ls.getQuality()
+										+ "\n").getBytes(),
+								StandardOpenOption.APPEND);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-			
-			allBest = fittestnow;
-			bestSolutions.add(fittestnow);
-			
-			
-			
-			result = createSupervisedTrainResult(tsC, ttC);
-			
-			
-			
-		} else {
+				}
+				try {
+					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+							("\n222222222222222\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 
-			
 			try {
 				setUp(trainingData);
 			} catch (InvalidConfigurationException e) {
@@ -253,8 +197,64 @@ public class Eagle extends ACoreMLAlgorithm {
 
 			Integer nGen = (Integer) Integer.parseInt(getParameter(GENERATIONS).toString());
 
-			
-			
+			for (int gen = 1; gen <= nGen; gen++) {
+				gp.evolve();
+
+			}
+
+			for (int i = 0; i < gp.getGPPopulation().getPopSize(); i++) {
+				if (i < elitism) {
+					gp.getGPPopulation().setGPProgram(i,
+							(GPProgram) prepgen.getPreserved_generation().getGPProgram(i).clone());
+					// gp.getGPPopulation().setGPProgram(i,
+					// gp.getGPPopulation().getGPProgram(i));//prepgen.getChanged_generation().getGPPopulation().getGPProgram(i-elitism));
+				} // else {
+					// }
+
+			}
+			//gp.getGPPopulation().sortByFitness();
+			quicksort(gp.getGPPopulation(), gsbr);
+
+			GPProgram fittestnow = (GPProgram) gp.getGPPopulation().getGPProgram(0);// (GPProgram)
+																					// prepgen.getPreserved_generation().getGPProgram(0);
+
+			try {
+				if ((Boolean) Boolean.parseBoolean(getParameter(SIMPLE_FITNESS).toString())) {
+					if (tsC != null && ttC != null)
+						Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"), ("##########:"
+						+ gsbr.evalF(fitness.getMapping(tsC, ttC, getLinkSpecification(fittestnow))) + "\n").getBytes(),
+						StandardOpenOption.APPEND);// fitness.calculateRawMeasure(fittestnow)
+				} else {
+					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"), ("##########:"
+					+ fitness.calculateRawMeasure(fittestnow) + "\n").getBytes(),
+					StandardOpenOption.APPEND);// fitness.calculateRawMeasure(fittestnow)
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			allBest = fittestnow;
+			bestSolutions.add(fittestnow);
+
+			result = createSupervisedTrainResult(tsC, ttC);
+
+		} else {
+
+			try {
+				setUp(trainingData);
+			} catch (InvalidConfigurationException e) {
+				e.printStackTrace();
+				logger.error(e.getMessage());
+				return null;
+			}
+
+			turn++;
+			fitness.addToReference(extractPositiveMatches(trainingData));
+			fitness.fillCachesIncrementally(trainingData);
+
+			Integer nGen = (Integer) Integer.parseInt(getParameter(GENERATIONS).toString());
+
 			for (int gen = 1; gen <= nGen; gen++) {
 				gp.evolve();
 				bestSolutions.add(determineFittest(gp, gen, null));
@@ -262,137 +262,163 @@ public class Eagle extends ACoreMLAlgorithm {
 
 			result = createSupervisedResult();
 		}
-		
-		//Log the rules of the current population for test/debug-purposes.
+
+		// Log the rules of the current population for test/debug-purposes.
 		if (logging) {
-		for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
+			for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
+				try {
+					LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
+					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+							(ls.getFullExpression().toString() + "-" + ls.getThreshold() + "-" + ls.getQuality() + "\n")
+									.getBytes(),
+							StandardOpenOption.APPEND);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			try {
-				LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
 				Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-						(ls.getFullExpression().toString()+"-" + ls.getThreshold() + "-" + ls.getQuality() + "\n").getBytes(), StandardOpenOption.APPEND);
-			} catch (Exception e) {
+						("\n------------\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		try {
-			Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-					("\n------------\n".toString()+"\n").getBytes(), StandardOpenOption.APPEND);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
-		
-		
+
 		return result;
 
 	}
-	
-	//Todo: Convert to Quicksort
-		public GPPopulation bubblesort(GPPopulation pop) {
-			double lastFitness = 0.0;
 
-			for (int i = 0; i < pop.getPopSize(); i++) {
-				for (int j = 1; j < pop.getPopSize(); j++) {
-					if (pop.getGPProgram(j) != null && pop.getGPProgram(j-1) != null) {
-						double fitM = fitness.calculateRawMeasure(pop.getGPProgram(j));
-						if (fitM < lastFitness) {
-							GPProgram ref = (GPProgram) pop.getGPProgram(j).clone();
-							pop.setGPProgram(j, pop.getGPProgram(j-1));
-							pop.setGPProgram(j-1, ref);
-						}
-						lastFitness = fitM;
+	// Todo: Convert to Quicksort
+	public GPPopulation bubblesort(GPPopulation pop, GoldStandardBatchReader gsbr) {
+		double lastFitness = 0.0;
+
+		for (int i = 0; i < pop.getPopSize(); i++) {
+			for (int j = 1; j < pop.getPopSize(); j++) {
+				if (pop.getGPProgram(j) != null && pop.getGPProgram(j - 1) != null) {
+					double fitM = gsbr.evalF(fitness.getMapping(tsC, ttC, getLinkSpecification(pop.getGPProgram(j))));// fitness.calculateRawMeasure(pop.getGPProgram(j));
+					if (fitM < lastFitness) {
+						GPProgram ref = (GPProgram) pop.getGPProgram(j).clone();
+						pop.setGPProgram(j, pop.getGPProgram(j - 1));
+						pop.setGPProgram(j - 1, ref);
 					}
+					lastFitness = fitM;
 				}
 			}
-			return pop;
 		}
-		//Experimental
+		return pop;
+	}
+	// Experimental
 
-		public GPPopulation quicksort(GPPopulation pop) {
-			if (fitness.getClass().getName() == "ExpressionFitnessFunction")
-				((ExpressionFitnessFunction) fitness).setUseFullCaches(false);
-			ArrayList<Integer> indices = new ArrayList<>();
-			for (int i = 0; i < pop.getPopSize(); i++) {
-				indices.add(i);
-			}
-			indices = sort(pop, indices);
-			ArrayList<GPProgram> tmp = new ArrayList<>();
-			for (int i = 0; i < pop.getPopSize(); i++) {
-				tmp.add((GPProgram) pop.getGPProgram(i).clone());
-			}
-			for (int i = 0; i < indices.size(); i++) {
-				pop.setGPProgram(i, tmp.get(indices.get(i)));
-			}
-			return pop;
+	public GPPopulation quicksort(GPPopulation pop, GoldStandardBatchReader gsbr) {
+		if (fitness.getClass().getName() == "ExpressionFitnessFunction")
+			((ExpressionFitnessFunction) fitness).setUseFullCaches(false);
+		ArrayList<Integer> indices = new ArrayList<>();
+		for (int i = 0; i < pop.getPopSize(); i++) {
+			indices.add(i);
 		}
-		public ArrayList<Integer> sort(GPPopulation pop, ArrayList<Integer> indices) {
-			
-			if (indices.size()<2) {
-				return indices;
+		indices = sort(pop, indices, gsbr);
+		ArrayList<GPProgram> tmp = new ArrayList<>();
+		for (int i = 0; i < pop.getPopSize(); i++) {
+			tmp.add((GPProgram) pop.getGPProgram(i).clone());
+		}
+		for (int i = 0; i < indices.size(); i++) {
+			pop.setGPProgram(i, tmp.get(indices.get(i)));
+		}
+		return pop;
+	}
+
+	public ArrayList<Integer> sort(GPPopulation pop, ArrayList<Integer> indices, GoldStandardBatchReader gsbr) {
+
+		if (indices.size() < 2) {
+			return indices;
+		}
+
+		int randomInt = (int) (Math.random() * ((indices.size())));
+		double reffitM = 0;
+		if ((Boolean) Boolean.parseBoolean(getParameter(SIMPLE_FITNESS).toString())) {
+			if (tsC == null || ttC == null) {
+				reffitM = fitness.calculateRawMeasure(pop.getGPProgram(indices.get(randomInt)));
+			} else {
+				reffitM = gsbr.evalF(
+						fitness.getMapping(tsC, ttC, getLinkSpecification(pop.getGPProgram(indices.get(randomInt)))));
 			}
-			
-			int randomInt = (int)(Math.random() * ((indices.size())));
-			double reffitM = fitness.calculateRawMeasure(pop.getGPProgram(indices.get(randomInt)));
-			
-			ArrayList<Integer> left = new ArrayList<>();
-			ArrayList<Integer> right = new ArrayList<>();
-			ArrayList<Integer> sortedIndices = new ArrayList<>();
-			
-			for (int i = 0; i < indices.size() && i < pop.getPopSize(); i++) {
-				if (i!=randomInt) {
-					double currentfitM = fitness.calculateRawMeasure(pop.getGPProgram(indices.get(i)));
-					if (currentfitM > reffitM) {
-						left.add(indices.get(i));
+		} else {
+			reffitM = fitness.calculateRawMeasure(pop.getGPProgram(indices.get(randomInt)));
+		}
+		ArrayList<Integer> left = new ArrayList<>();
+		ArrayList<Integer> right = new ArrayList<>();
+		ArrayList<Integer> sortedIndices = new ArrayList<>();
+
+		for (int i = 0; i < indices.size() && i < pop.getPopSize(); i++) {
+			if (i != randomInt) {
+				double currentfitM = 0;
+				if ((Boolean) Boolean.parseBoolean(getParameter(SIMPLE_FITNESS).toString())) {
+					if (tsC == null || ttC == null) {
+						currentfitM = fitness.calculateRawMeasure(pop.getGPProgram(indices.get(i)));
 					} else {
-						right.add(indices.get(i));
+						currentfitM = gsbr.evalF(
+								fitness.getMapping(tsC, ttC, getLinkSpecification(pop.getGPProgram(indices.get(i)))));
 					}
+				} else {
+					currentfitM = fitness.calculateRawMeasure(pop.getGPProgram(indices.get(i)));
+				}
+				if (currentfitM > reffitM) {
+					left.add(indices.get(i));
+				} else {
+					right.add(indices.get(i));
 				}
 			}
-			left = sort(pop, left);
-			right = sort(pop, right);
-			sortedIndices.addAll(left);
-			sortedIndices.add(indices.get(randomInt));
-			sortedIndices.addAll(right);
-			
-			return sortedIndices;
-			
 		}
-	
+		left = sort(pop, left, gsbr);
+		right = sort(pop, right, gsbr);
+		sortedIndices.addAll(left);
+		sortedIndices.add(indices.get(randomInt));
+		sortedIndices.addAll(right);
+
+		return sortedIndices;
+
+	}
+
 	protected class PreparedGeneration {
 		public GPPopulation getChanged_generation() {
 			return changed_generation;
 		}
+
 		public void setChanged_generation(GPPopulation changed_generation) {
 			this.changed_generation = changed_generation;
 		}
+
 		public GPPopulation getPreserved_generation() {
 			return preserved_generation;
 		}
+
 		public void setPreserved_generation(GPPopulation preserved_generation) {
 			this.preserved_generation = preserved_generation;
 		}
+
 		protected GPPopulation changed_generation;
 		protected GPPopulation preserved_generation;
+
 		protected PreparedGeneration(GPPopulation changed_generation, GPPopulation preserved_generation) {
 			this.changed_generation = changed_generation;
 			this.preserved_generation = preserved_generation;
 		}
 	}
-	
-	public PreparedGeneration preserve_fittest() {
+
+	public PreparedGeneration preserve_fittest(GoldStandardBatchReader gsbr) {
 
 		int elitism = (Integer) Integer.parseInt(getParameter(ELITISM).toString());
 
 		if (elitism > 0) {
 			gp.calcFitness();
-			
+
 			GPPopulation pop = gp.getGPPopulation();
-			//pop.sortByFitness();
-			
-			pop = quicksort(pop);//bubblesort(pop);
-			
+			// pop.sortByFitness();
+
+			pop = quicksort(pop, gsbr);// bubblesort(pop);
+
 			GPPopulation fittest = null;
 			GPPopulation remaining = null;
 			try {
@@ -402,25 +428,26 @@ public class Eagle extends ACoreMLAlgorithm {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			int ctr = 0;
 			while (ctr < elitism && ctr < pop.getPopSize()) {
 				fittest.setGPProgram(ctr, (GPProgram) pop.getGPProgram(ctr).clone());
 				ctr++;
 			}
 			while (ctr < pop.getPopSize()) {
-				remaining.setGPProgram(ctr-elitism, (GPProgram) pop.getGPProgram(ctr).clone());
+				remaining.setGPProgram(ctr - elitism, (GPProgram) pop.getGPProgram(ctr).clone());
 				ctr++;
 			}
-			
+
 			@SuppressWarnings("unused")
 			PropertyMapping pm = (PropertyMapping) getParameter(PROPERTY_MAPPING);
 			LinkSpecGeneticLearnerConfig jgapConfig;
 			try {
-				/*GPGenotype tmpgp = setUp(remaining.getPopSize());
-				for (int i = 0; i < (remaining.getPopSize()); i++) {
-					tmpgp.getGPPopulation().setGPProgram(i, (GPProgram) remaining.getGPProgram(i).clone());
-				} */
+				/*
+				 * GPGenotype tmpgp = setUp(remaining.getPopSize()); for (int i = 0; i <
+				 * (remaining.getPopSize()); i++) { tmpgp.getGPPopulation().setGPProgram(i,
+				 * (GPProgram) remaining.getGPProgram(i).clone()); }
+				 */
 				return new PreparedGeneration(null, fittest);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -429,6 +456,7 @@ public class Eagle extends ACoreMLAlgorithm {
 		}
 		return null;
 	}
+
 	private GPGenotype setUp(int popsize) throws InvalidConfigurationException {
 		PropertyMapping pm = (PropertyMapping) getParameter(PROPERTY_MAPPING);
 		if (!pm.wasSet()) {
@@ -448,11 +476,11 @@ public class Eagle extends ACoreMLAlgorithm {
 		jgapConfig2.setReproductionProb((Float) Float.parseFloat(getParameter(REPRODUCTION_RATE).toString()));
 		jgapConfig2.setPropertyMapping(pm);
 
-
-			PseudoFMeasure pfm = (PseudoFMeasure) getParameter(PSEUDO_FMEASURE);
-			//fitness = PseudoFMeasureFitnessFunction.getInstance(jgapConfig2, pfm, sourceCache, targetCache);
-			org.jgap.Configuration.reset();
-			//jgapConfig2.setFitnessFunction(fitness);
+		PseudoFMeasure pfm = (PseudoFMeasure) getParameter(PSEUDO_FMEASURE);
+		// fitness = PseudoFMeasureFitnessFunction.getInstance(jgapConfig2, pfm,
+		// sourceCache, targetCache);
+		org.jgap.Configuration.reset();
+		// jgapConfig2.setFitnessFunction(fitness);
 
 		GPProblem gpP;
 
@@ -485,29 +513,28 @@ public class Eagle extends ACoreMLAlgorithm {
 			specifications.add(currentBestMetric);
 		}
 
-		
-		//Log the rules of the current population for test/debug-purposes.
+		// Log the rules of the current population for test/debug-purposes.
 		if (logging) {
-		for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
+			for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
+				try {
+					LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
+					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+							(ls.getFullExpression().toString() + "-" + ls.getQuality() + "\n").getBytes(),
+							StandardOpenOption.APPEND);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			try {
-				LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
 				Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-						(ls.getFullExpression().toString()+ "-" +  ls.getQuality()  + "\n").getBytes(), StandardOpenOption.APPEND);
-			} catch (Exception e) {
+						("\n------------\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		try {
-			Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-					("\n------------\n".toString()+"\n").getBytes(), StandardOpenOption.APPEND);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
-		
-		
+
 		allBest = determineFittestUnsup(gp, nGen);
 		return createUnsupervisedResult();
 
@@ -533,16 +560,18 @@ public class Eagle extends ACoreMLAlgorithm {
 	// *************** active learning implementation
 	// *****************************************
 	@Override
-	protected AMapping getNextExamples(int size, GoldStandardBatchReader gsbr) throws UnsupportedMLImplementationException {
+	protected AMapping getNextExamples(int size, GoldStandardBatchReader gsbr)
+			throws UnsupportedMLImplementationException {
 		// throw new UnsupportedMLImplementationException(this.getName());
 		return calculateOracleQuestions(size, gsbr);
 
 	}
 
 	@Override
-	protected MLResults activeLearn(AMapping oracleMapping) throws UnsupportedMLImplementationException {
+	protected MLResults activeLearn(AMapping oracleMapping, GoldStandardBatchReader gsbr)
+			throws UnsupportedMLImplementationException {
 		logger.info("EAGLE active learning started with " + oracleMapping.size() + " examples");
-		return learn(oracleMapping);
+		return learn(oracleMapping, gsbr);
 	}
 
 	@Override
@@ -555,23 +584,38 @@ public class Eagle extends ACoreMLAlgorithm {
 	@Override
 	public void setDefaultParameters() {
 		learningParameters = new ArrayList<>();
-		learningParameters.add(new LearningParameter(GENERATIONS, 20, Integer.class, 1, Integer.MAX_VALUE, 1, GENERATIONS));
-    	learningParameters.add(new LearningParameter(PRESERVE_FITTEST, true, Boolean.class, Double.NaN, Double.NaN, Double.NaN, PRESERVE_FITTEST));
-    	learningParameters.add(new LearningParameter(MAX_DURATION, 60, Long.class, 0, Long.MAX_VALUE, 1, MAX_DURATION));
-    	learningParameters.add(new LearningParameter(INQUIRY_SIZE, 10, Integer.class, 1, Integer.MAX_VALUE, 1, INQUIRY_SIZE));
-    	learningParameters.add(new LearningParameter(MAX_ITERATIONS, 500, Integer.class, 1, Integer.MAX_VALUE, 1, MAX_ITERATIONS));
-    	learningParameters.add(new LearningParameter(MAX_QUALITY, 0.5, Double.class, 0d, 1d, Double.NaN, MAX_QUALITY));
-    	learningParameters.add(new LearningParameter(TERMINATION_CRITERIA, TerminationCriteria.iteration, TerminationCriteria.class, Double.NaN, Double.NaN, Double.NaN, TERMINATION_CRITERIA));
-    	learningParameters.add(new LearningParameter(TERMINATION_CRITERIA_VALUE, 0.0, Double.class, 0d, Double.MAX_VALUE, Double.NaN, TERMINATION_CRITERIA_VALUE));
-    	learningParameters.add(new LearningParameter(BETA, 1.0, Double.class, 0d, 1d, Double.NaN, BETA));
-    	learningParameters.add(new LearningParameter(POPULATION, 20, Integer.class, 1, Integer.MAX_VALUE, 1, POPULATION));
-    	learningParameters.add(new LearningParameter(MUTATION_RATE, 0.4f, Float.class, 0f, 1f, Double.NaN, MUTATION_RATE));
-    	learningParameters.add(new LearningParameter(REPRODUCTION_RATE, 0.4f, Float.class, 0f, 1f, Double.NaN, REPRODUCTION_RATE));
-    	learningParameters.add(new LearningParameter(CROSSOVER_RATE, 0.3f, Float.class, 0f, 1f, Double.NaN, CROSSOVER_RATE));
-    	learningParameters.add(new LearningParameter(MEASURE, new FMeasure(), IQualitativeMeasure.class, Double.NaN, Double.NaN, Double.NaN, MEASURE));
-    	learningParameters.add(new LearningParameter(PSEUDO_FMEASURE, new PseudoFMeasure(), IQualitativeMeasure.class, Double.NaN, Double.NaN, Double.NaN, MEASURE));
-    	learningParameters.add(new LearningParameter(PROPERTY_MAPPING, new PropertyMapping(), PropertyMapping.class, Double.NaN, Double.NaN, Double.NaN, PROPERTY_MAPPING));  	    
+		learningParameters
+				.add(new LearningParameter(GENERATIONS, 20, Integer.class, 1, Integer.MAX_VALUE, 1, GENERATIONS));
+		learningParameters.add(new LearningParameter(PRESERVE_FITTEST, true, Boolean.class, Double.NaN, Double.NaN,
+				Double.NaN, PRESERVE_FITTEST));
+		learningParameters.add(new LearningParameter(MAX_DURATION, 60, Long.class, 0, Long.MAX_VALUE, 1, MAX_DURATION));
+		learningParameters
+				.add(new LearningParameter(INQUIRY_SIZE, 10, Integer.class, 1, Integer.MAX_VALUE, 1, INQUIRY_SIZE));
+		learningParameters.add(
+				new LearningParameter(MAX_ITERATIONS, 500, Integer.class, 1, Integer.MAX_VALUE, 1, MAX_ITERATIONS));
+		learningParameters.add(new LearningParameter(MAX_QUALITY, 0.5, Double.class, 0d, 1d, Double.NaN, MAX_QUALITY));
+		learningParameters.add(new LearningParameter(TERMINATION_CRITERIA, TerminationCriteria.iteration,
+				TerminationCriteria.class, Double.NaN, Double.NaN, Double.NaN, TERMINATION_CRITERIA));
+		learningParameters.add(new LearningParameter(TERMINATION_CRITERIA_VALUE, 0.0, Double.class, 0d,
+				Double.MAX_VALUE, Double.NaN, TERMINATION_CRITERIA_VALUE));
+		learningParameters.add(new LearningParameter(BETA, 1.0, Double.class, 0d, 1d, Double.NaN, BETA));
+		learningParameters
+				.add(new LearningParameter(POPULATION, 20, Integer.class, 1, Integer.MAX_VALUE, 1, POPULATION));
+		learningParameters
+				.add(new LearningParameter(MUTATION_RATE, 0.4f, Float.class, 0f, 1f, Double.NaN, MUTATION_RATE));
+		learningParameters.add(
+				new LearningParameter(REPRODUCTION_RATE, 0.4f, Float.class, 0f, 1f, Double.NaN, REPRODUCTION_RATE));
+		learningParameters
+				.add(new LearningParameter(CROSSOVER_RATE, 0.3f, Float.class, 0f, 1f, Double.NaN, CROSSOVER_RATE));
+		learningParameters.add(new LearningParameter(MEASURE, new FMeasure(), IQualitativeMeasure.class, Double.NaN,
+				Double.NaN, Double.NaN, MEASURE));
+		learningParameters.add(new LearningParameter(PSEUDO_FMEASURE, new PseudoFMeasure(), IQualitativeMeasure.class,
+				Double.NaN, Double.NaN, Double.NaN, MEASURE));
+		learningParameters.add(new LearningParameter(PROPERTY_MAPPING, new PropertyMapping(), PropertyMapping.class,
+				Double.NaN, Double.NaN, Double.NaN, PROPERTY_MAPPING));
 		learningParameters.add(new LearningParameter(ELITISM, 0, Integer.class, 1, Integer.MAX_VALUE, 1, ELITISM));
+		learningParameters.add(new LearningParameter(SIMPLE_FITNESS, true, Boolean.class, Double.NaN, Double.NaN,
+				Double.NaN, PRESERVE_FITTEST));
 	}
 
 	// ====================== SPECIFIC METHODS =======================
@@ -621,7 +665,7 @@ public class Eagle extends ACoreMLAlgorithm {
 		GPProblem gpP;
 
 		gpP = new ExpressionProblem(jgapConfig);
-		if (gp==null)
+		if (gp == null)
 			gp = gpP.create();
 	}
 
@@ -660,7 +704,7 @@ public class Eagle extends ACoreMLAlgorithm {
 
 		IGPProgram bests[] = { gp.getFittestProgramComputed(), pop.determineFittestProgram(),
 				// gp.getAllTimeBest(),
-				pop.getGPProgram(0), fittestnow};
+				pop.getGPProgram(0), fittestnow };
 		IGPProgram bestHere = null;
 		double fittest = Double.MAX_VALUE;
 
@@ -716,7 +760,7 @@ public class Eagle extends ACoreMLAlgorithm {
 		ProgramChromosome pc = p.getChromosome(0);
 		return (LinkSpecification) pc.getNode(0).execute_object(pc, 0, args);
 	}
-	
+
 	/**
 	 * @return wrap with results
 	 */
@@ -730,7 +774,7 @@ public class Eagle extends ACoreMLAlgorithm {
 		result.addDetail("specifiactions", bestSolutions);
 		return result;
 	}
-	
+
 	/**
 	 * @return wrap with results
 	 */
@@ -758,57 +802,61 @@ public class Eagle extends ACoreMLAlgorithm {
 	}
 
 	/**
-     * @param size number of questions
-     * @return the mapping
-     */
-    private AMapping calculateOracleQuestions(int size, GoldStandardBatchReader gsbr) {
-        // first get all Mappings for the current population
-        logger.info("Getting mappings for output");
-        GPPopulation pop = this.gp.getGPPopulation();
-        pop.sortByFitness();
-        HashSet<LinkSpecification> metrics = new HashSet<LinkSpecification>();
-        List<AMapping> candidateMaps = new LinkedList<AMapping>();
-        // and add the all time best
+	 * @param size
+	 *            number of questions
+	 * @return the mapping
+	 */
+	private AMapping calculateOracleQuestions(int size, GoldStandardBatchReader gsbr) {
+		// first get all Mappings for the current population
+		logger.info("Getting mappings for output");
+		GPPopulation pop = this.gp.getGPPopulation();
+		pop.sortByFitness();
+		HashSet<LinkSpecification> metrics = new HashSet<LinkSpecification>();
+		List<AMapping> candidateMaps = new LinkedList<AMapping>();
+		// and add the all time best
 
-        metrics.add(getLinkSpecification(allBest));
+		metrics.add(getLinkSpecification(allBest));
 
-        for (IGPProgram p : pop.getGPPrograms()) {
-            LinkSpecification m = getLinkSpecification(p);
-            if (m != null && !metrics.contains(m)) {
-                //logger.info("Adding metric "+m);
-                metrics.add(m);
-            }
-        }
-        // fallback solution if we have too less candidates
-        if (metrics.size() <= 1) {
-            // TODO implement
-        	throw new NotYetImplementedException("Fallback solution if we have too less candidates.");
-        }
+		for (IGPProgram p : pop.getGPPrograms()) {
+			LinkSpecification m = getLinkSpecification(p);
+			if (m != null && !metrics.contains(m)) {
+				// logger.info("Adding metric "+m);
+				metrics.add(m);
+			}
+		}
+		// fallback solution if we have too less candidates
+		if (metrics.size() <= 1) {
+			// TODO implement
+			throw new NotYetImplementedException("Fallback solution if we have too less candidates.");
+		}
 
-        // get mappings for all distinct metrics
-        
-       /*HashMap<String, HashMap<String, Double >> src_without_seen = gsbr.removeSeen(sourceCache);
-        ACache c_src_without_seen = new MemoryCache();
-        c_src_without_seen.setInstanceMap(src_without_seen);
-		HashMap<String, HashMap<String, Double >> trg_without_seen = gsbr.removeSeen(targetCache);
-        ACache c_src_without_seen = new MemoryCache();*/
-        
+		// get mappings for all distinct metrics
+
+		/*
+		 * HashMap<String, HashMap<String, Double >> src_without_seen =
+		 * gsbr.removeSeen(sourceCache); ACache c_src_without_seen = new MemoryCache();
+		 * c_src_without_seen.setInstanceMap(src_without_seen); HashMap<String,
+		 * HashMap<String, Double >> trg_without_seen = gsbr.removeSeen(targetCache);
+		 * ACache c_src_without_seen = new MemoryCache();
+		 */
+
 		logger.info("Getting " + metrics.size() + " full mappings to determine controversy matches...");
 		for (LinkSpecification m : metrics) {
-		    candidateMaps.add(fitness.getMapping(sourceCache, targetCache, m));
+			candidateMaps.add(fitness.getMapping(sourceCache, targetCache, m));
 		}
-        // get most controversy matches
-        logger.info("Getting " + size + " controversy match candidates from " + candidateMaps.size() + " maps...");
-        ;
-        List<ALDecider.Triple> controversyMatches = alDecider.getControversyCandidates(candidateMaps, size, gsbr);
-        //List<ALDecider.Triple> controversyMatches = alDecider.getControversyCandidates(candidateMaps, size, null);
-        // construct answer
-        AMapping answer = MappingFactory.createDefaultMapping();
-        for (ALDecider.Triple t : controversyMatches) {
-            answer.add(t.getSourceUri(), t.getTargetUri(), t.getSimilarity());
-        }
-        return answer;
-    }
+		// get most controversy matches
+		logger.info("Getting " + size + " controversy match candidates from " + candidateMaps.size() + " maps...");
+		;
+		List<ALDecider.Triple> controversyMatches = alDecider.getControversyCandidates(candidateMaps, size, gsbr);
+		// List<ALDecider.Triple> controversyMatches =
+		// alDecider.getControversyCandidates(candidateMaps, size, null);
+		// construct answer
+		AMapping answer = MappingFactory.createDefaultMapping();
+		for (ALDecider.Triple t : controversyMatches) {
+			answer.add(t.getSourceUri(), t.getTargetUri(), t.getSimilarity());
+		}
+		return answer;
+	}
 
 	/**
 	 * Method to compute best individuals by hand.
@@ -873,6 +921,18 @@ public class Eagle extends ACoreMLAlgorithm {
 	 */
 	public int getTurn() {
 		return turn;
+	}
+
+	@Override
+	protected MLResults learn(AMapping trainingData) throws UnsupportedMLImplementationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected MLResults activeLearn(AMapping oracleMapping) throws UnsupportedMLImplementationException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

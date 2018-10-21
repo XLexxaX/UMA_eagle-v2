@@ -125,7 +125,7 @@ public class Evaluator {
 						// mlModel = sml.activeLearn(dataset.training);
 						AMapping nextExamples = sml.getNextExamples((int) Math.round(0.5 * dataset.training.size()), null);
 						AMapping oracleFeedback = oracleFeedback(nextExamples, dataset.training);
-						mlModel = sml.activeLearn(oracleFeedback);
+						mlModel = sml.activeLearn(oracleFeedback, null);
 					} else if (tAlgorithm.getMlType().equals(MLImplementationType.UNSUPERVISED)) {
 						logger.info("Implementation type: " + MLImplementationType.UNSUPERVISED);
 						UnsupervisedMLAlgorithm sml = (UnsupervisedMLAlgorithm) tAlgorithm.getMlAlgorithm();
@@ -367,7 +367,7 @@ public class Evaluator {
 			if (algorithm instanceof SupervisedMLAlgorithm)
 				model = algorithm.asSupervised().learn(trainingData);
 			else if (algorithm instanceof ActiveMLAlgorithm)
-				model = algorithm.asActive().activeLearn(trainingData);
+				model = algorithm.asActive().activeLearn(trainingData, null);
 		} catch (UnsupportedMLImplementationException e) {
 			e.printStackTrace();
 		}

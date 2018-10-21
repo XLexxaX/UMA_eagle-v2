@@ -80,4 +80,10 @@ public class PseudoFMeasure extends APseudoPRF {
         return new PseudoPrecision().calculate(predictions, goldStandard);
     }
 
+	@Override
+	public double calculateSimple(AMapping a_mapping, GoldStandard goldStandard) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -34,4 +34,10 @@ public class Accuracy extends APRF implements IQualitativeMeasure {
 
 		return (truePositiveValue + trueNegativeValue) / (allPositiveValue + allNegativeValue);
     }
+
+	@Override
+	public double calculateSimple(AMapping a_mapping, GoldStandard goldStandard) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
