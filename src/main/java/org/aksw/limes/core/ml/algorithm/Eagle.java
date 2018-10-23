@@ -96,6 +96,7 @@ public class Eagle extends ACoreMLAlgorithm {
 
 	public static final String MEASURE = "measure";
 	public static final String PROPERTY_MAPPING = "property_mapping";
+	private static final String ORIGINAL = "original";
 
 	// ========================================================================
 
@@ -121,34 +122,111 @@ public class Eagle extends ACoreMLAlgorithm {
 		this.bestSolutions = new LinkedList<IGPProgram>();
 	}
 
+    protected MLResults learnOriginal(AMapping trainingData) {
+		
+		try {
+			setUp(trainingData);
+		} catch (InvalidConfigurationException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return null;
+		}
+    	
+    	turn++;
+        fitness.addToReference(extractPositiveMatches(trainingData));
+        fitness.fillCachesIncrementally(trainingData);
+
+        Integer nGen = (Integer) Integer.parseInt(getParameter(GENERATIONS).toString());
+        
+        for (int gen = 1; gen <= nGen; gen++) {
+            gp.evolve();
+            bestSolutions.add(determineFittestOriginal(gp, gen));
+        }
+
+        MLResults result = createSupervisedResult();
+        return result;
+        
+    }
+    
+    private IGPProgram determineFittestOriginal(GPGenotype gp, int gen) {
+
+        GPPopulation pop = gp.getGPPopulation();
+        pop.sortByFitness();
+
+        IGPProgram bests[] = {gp.getFittestProgramComputed(), pop.determineFittestProgram(),
+                // gp.getAllTimeBest(),
+                pop.getGPProgram(0),};
+        IGPProgram bestHere = null;
+        double fittest = Double.MAX_VALUE;
+
+        for (IGPProgram p : bests) {
+            if (p != null) {
+                double fitM = fitness.calculateRawFitness(p);
+                if (fitM < fittest) {
+                    fittest = fitM;
+                    bestHere = p;
+                }
+            }
+        }
+        /* consider population if necessary */
+        if (bestHere == null) {
+            logger.debug("Determining best program failed, consider the whole population");
+            for (IGPProgram p : pop.getGPPrograms()) {
+                if (p != null) {
+                    double fitM = fitness.calculateRawFitness(p);
+                    if (fitM < fittest) {
+                        fittest = fitM;
+                        bestHere = p;
+                    }
+                }
+            }
+        }
+        
+        
+        // remember the best
+        if ((Boolean) Boolean.parseBoolean(getParameter(PRESERVE_FITTEST).toString())) {
+            if (allBest == null || fitness.calculateRawFitness(allBest) > fittest) {
+                allBest = bestHere;
+                logger.info("Generation " + gen + " new fittest (" + fittest + ") individual: " + getLinkSpecification(bestHere));
+            }
+        }
+
+        return bestHere;
+    }
+	
 	@Override
 	protected MLResults learn(AMapping trainingData, GoldStandardBatchReader gsbr) {
+		
+		if (logging) {
+			for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
+				try {
+					LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
+					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+							(ls.getFullExpression().toString() + "-" + ls.getThreshold() + "-" + ls.getQuality()
+									+ "\n").getBytes(),
+							StandardOpenOption.APPEND);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			try {
+				Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+						("\n1111111111111\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if ((Boolean) (Boolean.parseBoolean(getParameter(ORIGINAL).toString())))
+			return this.learnOriginal(trainingData);
 
 		MLResults result = null;
 		int elitism = (Integer) Integer.parseInt(getParameter(ELITISM).toString());
 		if (elitism > 0) {
 
-			if (logging) {
-				for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
-					try {
-						LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
-						Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-								(ls.getFullExpression().toString() + "-" + ls.getThreshold() + "-" + ls.getQuality()
-										+ "\n").getBytes(),
-								StandardOpenOption.APPEND);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				try {
-					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-							("\n1111111111111\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			
 
 			if (fitness.getClass().getName()
 					.equals("org.aksw.limes.core.ml.algorithm.eagle.core.ExpressionFitnessFunction") && (Boolean) Boolean.parseBoolean(getParameter(SIMPLE_FITNESS).toString())) {
@@ -228,7 +306,7 @@ public class Eagle extends ACoreMLAlgorithm {
 					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"), ("##########:"
 					+ fitness.calculateRawMeasure(fittestnow) + "\n").getBytes(),
 					StandardOpenOption.APPEND);// fitness.calculateRawMeasure(fittestnow)
-				}
+				}                                                                                                                                                                                                                                                                                                                                 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -615,7 +693,9 @@ public class Eagle extends ACoreMLAlgorithm {
 				Double.NaN, Double.NaN, Double.NaN, PROPERTY_MAPPING));
 		learningParameters.add(new LearningParameter(ELITISM, 0, Integer.class, 1, Integer.MAX_VALUE, 1, ELITISM));
 		learningParameters.add(new LearningParameter(SIMPLE_FITNESS, true, Boolean.class, Double.NaN, Double.NaN,
-				Double.NaN, PRESERVE_FITTEST));
+				Double.NaN, SIMPLE_FITNESS));
+		learningParameters.add(new LearningParameter(ORIGINAL, true, Boolean.class, Double.NaN, Double.NaN,
+				Double.NaN, ORIGINAL));
 	}
 
 	// ====================== SPECIFIC METHODS =======================

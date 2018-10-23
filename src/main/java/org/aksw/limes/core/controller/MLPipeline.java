@@ -97,9 +97,6 @@ public class MLPipeline {
     					 nextExamples = mla.getNextExamples(5, gsbr);
         				 examples.setSize(examples.getSize()+5);
     				 }
-    				 if (examples.getSize()> 140) {
-    					 System.out.println("");
-    				 }
     				 
                      int j = 0;
                      for (String s : nextExamples.getMap().keySet()) {
