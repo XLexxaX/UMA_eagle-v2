@@ -694,7 +694,7 @@ public class Eagle extends ACoreMLAlgorithm {
 		learningParameters.add(new LearningParameter(ELITISM, 0, Integer.class, 1, Integer.MAX_VALUE, 1, ELITISM));
 		learningParameters.add(new LearningParameter(SIMPLE_FITNESS, true, Boolean.class, Double.NaN, Double.NaN,
 				Double.NaN, SIMPLE_FITNESS));
-		learningParameters.add(new LearningParameter(ORIGINAL, true, Boolean.class, Double.NaN, Double.NaN,
+		learningParameters.add(new LearningParameter(ORIGINAL, false, Boolean.class, Double.NaN, Double.NaN,
 				Double.NaN, ORIGINAL));
 	}
 

@@ -29,7 +29,7 @@ public class Configuration implements IConfiguration {
     protected KBInfo sourceInfo = new KBInfo();
     protected KBInfo targetInfo = new KBInfo();
     
-    public int maxRounds = 0; 
+    public int maxIterations = 0; 
 
     protected String metricExpression = new String();
 
@@ -58,6 +58,9 @@ public class Configuration implements IConfiguration {
     protected MLImplementationType mlImplementationType = MLImplementationType.UNSUPERVISED;
     protected String mlTrainingDataFile = null;
     protected EvaluatorType mlPseudoFMeasure = null;
+    public String gold_file = "";
+    public String log_file = "";
+    public int repetitions = 0;
     
 
     public Configuration() {

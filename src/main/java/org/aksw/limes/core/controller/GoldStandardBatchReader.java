@@ -27,9 +27,11 @@ public class GoldStandardBatchReader {
 	public HashMap<String, Double> trainResult = new HashMap<>();
 	public HashMap<String, Double> testResult = new HashMap<>();
 
+	private String log_file = "";
 	protected static Logger logger = Logger.getLogger(GoldStandardBatchReader.class);
 
-	public GoldStandardBatchReader(String inputFile) {
+	public GoldStandardBatchReader(String inputFile, String log_file) {
+		this.log_file = log_file;
 		try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
 			String line = "";
 			HashMap<String, Double> tmp = null;
@@ -312,7 +314,7 @@ public class GoldStandardBatchReader {
 		this.testResult.put("f", trainF);
 
 		try {
-			Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"), outString.getBytes(),
+			Files.write(Paths.get(log_file), outString.getBytes(),
 					StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			e.printStackTrace();

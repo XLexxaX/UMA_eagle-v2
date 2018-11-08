@@ -76,6 +76,10 @@ public class XMLConfigurationReader extends AConfigurationReader {
     protected static final String MAXOFFSET = "MAXOFFSET";
     protected static final String MINOFFSET = "MINOFFSET";
     protected static final String FUNCTION = "FUNCTION";
+    protected static final String MAXITERATIONS = "MAXITERATIONS";
+    protected static final String RESULT_LOGFILE = "RESULT_LOGFILE";
+    protected static final String MAPPINGSFILE = "MAPPINGSFILE";
+    protected static final String REPETITIONS = "REPETITIONS";
 
     /**
      * Constructor
@@ -360,6 +364,28 @@ public class XMLConfigurationReader extends AConfigurationReader {
                 list = xmlDocument.getElementsByTagName(TARGET);
                 children = list.item(0).getChildNodes();
                 processKBDescription(TARGET, children);
+                
+                list = xmlDocument.getElementsByTagName(MAXITERATIONS);
+                if (list.getLength() > 0) {
+                    children = list.item(0).getChildNodes();
+                    configuration.maxIterations = Integer.parseInt(getText(list.item(0)));
+                }
+                list = xmlDocument.getElementsByTagName(RESULT_LOGFILE);
+                if (list.getLength() > 0) {
+                    children = list.item(0).getChildNodes();
+                    configuration.gold_file = (getText(list.item(0)));
+                }
+                list = xmlDocument.getElementsByTagName(MAPPINGSFILE);
+                if (list.getLength() > 0) {
+                    children = list.item(0).getChildNodes();
+                    configuration.gold_file = (getText(list.item(0)));
+                }
+                list = xmlDocument.getElementsByTagName(REPETITIONS);
+                if (list.getLength() > 0) {
+                    children = list.item(0).getChildNodes();
+                    configuration.repetitions = Integer.parseInt(getText(list.item(0)));
+                }
+
 
                 // 3.METRIC
                 list = xmlDocument.getElementsByTagName(METRIC);

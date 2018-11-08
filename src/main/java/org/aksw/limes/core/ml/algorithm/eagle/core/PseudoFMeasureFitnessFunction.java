@@ -88,6 +88,7 @@ public class PseudoFMeasureFitnessFunction extends IGPFitnessFunction {
             logger.error("Pseudo Measure was not in [0,1]");
             System.out.println("Pseudo Measure for (" + spec + ") was not in [0,1]");
             System.err.println("Pseudo Measure for (" + spec + ") was not in [0,1]");
+            return 1.0d;
         }
         if (pseudoFMeasure >= 0)
             return Math.abs(1.0d - pseudoFMeasure);
