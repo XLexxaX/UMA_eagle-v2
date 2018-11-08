@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LIMES SYSTEM "limes.dtd">
+<LIMES>	
+	<MAXITERATIONS>15</MAXITERATIONS>
+	<RESULT_LOGFILE>results.txt</RESULT_LOGFILE>
+	<MAPPINGSFILE>/datasets/headphones/alignment.ttl</MAPPINGSFILE>
+	<REPETITIONS>3</REPETITIONS>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/1999/02/22-rdf-syntax-ns#</NAMESPACE>
+        <LABEL>rdf</LABEL>
+    </PREFIX>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/2002/07/owl#</NAMESPACE>
+        <LABEL>owl</LABEL>
+    </PREFIX>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/2001/XMLSchema#</NAMESPACE>
+        <LABEL>schema</LABEL>
+    </PREFIX>
+	
+    <SOURCE>
+        <ID>cat</ID>
+        <ENDPOINT>C:/Users/Alexander/Desktop/data_phones/datasets/headphones/source_filled2.nt</ENDPOINT>
+        <VAR>?y</VAR>
+        <PAGESIZE>-1</PAGESIZE>
+        <RESTRICTION>?y</RESTRICTION>
+<PROPERTY>rdf:warc</PROPERTY>
+<PROPERTY>rdf:url</PROPERTY>
+<PROPERTY>rdf:brand</PROPERTY>
+<PROPERTY>rdf:connectivitytechnology</PROPERTY>
+<PROPERTY>rdf:thd</PROPERTY>
+<PROPERTY>rdf:color</PROPERTY>
+<PROPERTY>rdf:headphonesformfactor</PROPERTY>
+<PROPERTY>rdf:frequencyresponse</PROPERTY>
+<PROPERTY>rdf:model</PROPERTY>
+<PROPERTY>rdf:microphonesensitivity</PROPERTY>
+        <TYPE>NT</TYPE>
+    </SOURCE>
+    <TARGET>
+        <ID>off</ID>
+        <ENDPOINT>C:/Users/Alexander/Desktop/data_phones/datasets/headphones/target_filled2.nt</ENDPOINT>
+        <VAR>?x</VAR>
+        <PAGESIZE>-1</PAGESIZE>
+        <RESTRICTION>?x</RESTRICTION>
+<PROPERTY>rdf:producttype</PROPERTY>
+<PROPERTY>rdf:width</PROPERTY>
+<PROPERTY>rdf:depth</PROPERTY>
+<PROPERTY>rdf:height</PROPERTY>
+<PROPERTY>rdf:brand</PROPERTY>
+<PROPERTY>rdf:model</PROPERTY>
+<PROPERTY>rdf:mpn</PROPERTY>
+<PROPERTY>rdf:productgtin</PROPERTY>
+<PROPERTY>rdf:aditionalfeatures</PROPERTY>
+<PROPERTY>rdf:mdoel</PROPERTY>
+        <TYPE>NT</TYPE>
+    </TARGET>
+        
+    <MLALGORITHM>
+        <NAME>EAGLE</NAME>
+        <TYPE>supervised active</TYPE>
+		<PARAMETER>
+		<NAME>inquiry_size</NAME>
+		<VALUE>5</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>population</NAME>
+		<VALUE>50</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>preserve_fittest</NAME>
+		<VALUE>true</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>generations</NAME>
+		<VALUE>25</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>max_quality</NAME>
+		<VALUE>0.999999999</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>elitism</NAME>
+		<VALUE>5</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>reproduction_rate</NAME>
+		<VALUE>0.0</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>simple_fitness</NAME>
+		<VALUE>false</VALUE>
+		</PARAMETER>
+    </MLALGORITHM>
+    <ACCEPTANCE>
+        <THRESHOLD>0.2</THRESHOLD>
+        <FILE>acceptance.nt</FILE>
+        <RELATION>owl:sameAs</RELATION>
+    </ACCEPTANCE>
+    <REVIEW>
+        <THRESHOLD>0.1</THRESHOLD>
+        <FILE>review.nt</FILE>
+        <RELATION>owl:sameAs</RELATION>
+    </REVIEW>
+       <EXECUTION>
+          <REWRITER>default</REWRITER>
+          <PLANNER>default</PLANNER>
+          <ENGINE>default</ENGINE>
+         </EXECUTION>
+    <OUTPUT>NT</OUTPUT>
+</LIMES>

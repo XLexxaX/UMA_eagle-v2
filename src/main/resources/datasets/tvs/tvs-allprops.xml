@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LIMES SYSTEM "limes.dtd">
+<LIMES>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/1999/02/22-rdf-syntax-ns#</NAMESPACE>
+        <LABEL>rdf</LABEL>
+    </PREFIX>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/2002/07/owl#</NAMESPACE>
+        <LABEL>owl</LABEL>
+    </PREFIX>
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/2001/XMLSchema#</NAMESPACE>
+        <LABEL>schema</LABEL>
+    </PREFIX>
+	
+    <SOURCE>
+        <ID>cat</ID>
+        <ENDPOINT>C:/Users/Alexander/Desktop/data_phones/datasets/tvs/wdc_resource_filled2.nt</ENDPOINT>
+        <VAR>?y</VAR>
+        <PAGESIZE>-1</PAGESIZE>
+        <RESTRICTION>?y</RESTRICTION>
+        <PROPERTY>rdf:audioformats</PROPERTY>
+<PROPERTY>rdf:analogtuner</PROPERTY>
+<PROPERTY>rdf:usbports</PROPERTY>
+<PROPERTY>rdf:viewingangle</PROPERTY>
+<PROPERTY>rdf:manufacturer</PROPERTY>
+<PROPERTY>rdf:backlighttechnology</PROPERTY>
+<PROPERTY>rdf:digitalaudiooutput</PROPERTY>
+<PROPERTY>rdf:displaytype</PROPERTY>
+<PROPERTY>rdf:videosignalstandard</PROPERTY>
+<PROPERTY>rdf:displayresolution</PROPERTY>
+<PROPERTY>rdf:model</PROPERTY>
+<PROPERTY>rdf:scanformat</PROPERTY>
+<PROPERTY>rdf:digitaltvtuner</PROPERTY>
+<PROPERTY>rdf:brand</PROPERTY>
+<PROPERTY>rdf:videoformats</PROPERTY>
+<PROPERTY>rdf:componentvideo</PROPERTY>
+<PROPERTY>rdf:hdmi</PROPERTY>
+<PROPERTY>rdf:upc</PROPERTY>
+<PROPERTY>rdf:mpn</PROPERTY>
+<PROPERTY>rdf:compositevideo</PROPERTY>
+<PROPERTY>rdf:viewablesize</PROPERTY>
+<PROPERTY>rdf:combotype</PROPERTY>
+<PROPERTY>rdf:vga</PROPERTY>
+<PROPERTY>rdf:imageaspectratio</PROPERTY>
+<PROPERTY>rdf:producttype</PROPERTY>
+<PROPERTY>rdf:responsetime</PROPERTY>
+<PROPERTY>rdf:headphone</PROPERTY>
+<PROPERTY>rdf:builtintuner</PROPERTY>
+<PROPERTY>rdf:warc</PROPERTY>
+<PROPERTY>rdf:url</PROPERTY>
+<PROPERTY>rdf:isbn</PROPERTY>
+<PROPERTY>rdf:usbstandard</PROPERTY>
+<PROPERTY>rdf:color</PROPERTY>
+<PROPERTY>rdf:weightwithstand</PROPERTY>
+<PROPERTY>rdf:pcstreaming</PROPERTY>
+<PROPERTY>rdf:series</PROPERTY>
+<PROPERTY>rdf:dglassesrequired</PROPERTY>
+<PROPERTY>rdf:height</PROPERTY>
+<PROPERTY>rdf:smartcapable</PROPERTY>
+<PROPERTY>rdf:internetaccess</PROPERTY>
+<PROPERTY>rdf:greencompliant</PROPERTY>
+<PROPERTY>rdf:weight</PROPERTY>
+<PROPERTY>rdf:bundleditems</PROPERTY>
+<PROPERTY>rdf:hdmiports</PROPERTY>
+<PROPERTY>rdf:depthwithstand</PROPERTY>
+<PROPERTY>rdf:widthwithstand</PROPERTY>
+<PROPERTY>rdf:depth</PROPERTY>
+<PROPERTY>rdf:computeroperatingsystem</PROPERTY>
+<PROPERTY>rdf:width</PROPERTY>
+<PROPERTY>rdf:heightwithstand</PROPERTY>
+<PROPERTY>rdf:mediaplayer</PROPERTY>
+<PROPERTY>rdf:interactivefeatures</PROPERTY>
+<PROPERTY>rdf:dtechnology</PROPERTY>
+<PROPERTY>rdf:networkrj</PROPERTY>
+<PROPERTY>rdf:additionaldeaturesd</PROPERTY>
+<PROPERTY>rdf:connectivity</PROPERTY>
+<PROPERTY>rdf:commercialfeatures</PROPERTY>
+<PROPERTY>rdf:displaytechnology</PROPERTY>
+<PROPERTY>rdf:wificonnection</PROPERTY>
+<PROPERTY>rdf:refreshrate</PROPERTY>
+<PROPERTY>rdf:condition</PROPERTY>
+<PROPERTY>rdf:aboutthebrand</PROPERTY>
+<PROPERTY>rdf:speakersqty</PROPERTY>
+<PROPERTY>rdf:additionalfeaturesd</PROPERTY>
+<PROPERTY>rdf:remoteincluded</PROPERTY>
+<PROPERTY>rdf:batterytype</PROPERTY>
+<PROPERTY>rdf:dimensionswithoutstand</PROPERTY>
+<PROPERTY>rdf:packageweight</PROPERTY>
+<PROPERTY>rdf:multipackindicator</PROPERTY>
+<PROPERTY>rdf:productcode</PROPERTY>
+<PROPERTY>rdf:imagecontrast</PROPERTY>
+<PROPERTY>rdf:smarttvfeatures</PROPERTY>
+<PROPERTY>rdf:origin</PROPERTY>
+<PROPERTY>rdf:videointerface</PROPERTY>
+<PROPERTY>rdf:productgtin</PROPERTY>
+<PROPERTY>rdf:totalsize</PROPERTY>
+<PROPERTY>rdf:digitalaudioformat</PROPERTY>
+<PROPERTY>rdf:voltage</PROPERTY>
+<PROPERTY>rdf:inputconnectors</PROPERTY>
+<PROPERTY>rdf:energystarcertified</PROPERTY>
+<PROPERTY>rdf:gtin</PROPERTY>
+<PROPERTY>rdf:audiovideoinputs</PROPERTY>
+<PROPERTY>rdf:countryregionofmanufacture</PROPERTY>
+<PROPERTY>rdf:additionalfeatures</PROPERTY>
+<PROPERTY>rdf:smartfunctionality</PROPERTY>
+<PROPERTY>rdf:dimensionswxhxdtvwithstand</PROPERTY>
+<PROPERTY>rdf:dimensionswxhxdtvwithoutstand</PROPERTY>
+<PROPERTY>rdf:inputs</PROPERTY>
+<PROPERTY>rdf:rfantennainput</PROPERTY>
+<PROPERTY>rdf:yearlyoperatingcost</PROPERTY>
+<PROPERTY>rdf:speakerstype</PROPERTY>
+<PROPERTY>rdf:wallmountable</PROPERTY>
+<PROPERTY>rdf:videoinputsqty</PROPERTY>
+<PROPERTY>rdf:inputvideoformats</PROPERTY>
+<PROPERTY>rdf:wallmountdimensions</PROPERTY>
+<PROPERTY>rdf:warranty</PROPERTY>
+<PROPERTY>rdf:pcinput</PROPERTY>
+<PROPERTY>rdf:soundeffects</PROPERTY>
+<PROPERTY>rdf:epaetqualified</PROPERTY>
+<PROPERTY>rdf:yearlyconsumption</PROPERTY>
+<PROPERTY>rdf:mediacardslot</PROPERTY>
+<PROPERTY>rdf:channellock</PROPERTY>
+<PROPERTY>rdf:builtins</PROPERTY>
+<PROPERTY>rdf:imagecontrastratio</PROPERTY>
+<PROPERTY>rdf:widescreenmodes</PROPERTY>
+<PROPERTY>rdf:vchipcontrol</PROPERTY>
+<PROPERTY>rdf:tvtuner</PROPERTY>
+<PROPERTY>rdf:compliantstandards</PROPERTY>
+<PROPERTY>rdf:pcinterface</PROPERTY>
+<PROPERTY>rdf:brightness</PROPERTY>
+<PROPERTY>rdf:powersupply</PROPERTY>
+<PROPERTY>rdf:closedcaptioncapability</PROPERTY>
+<PROPERTY>rdf:hdcpcompatability</PROPERTY>
+<PROPERTY>rdf:dimensionswithstand</PROPERTY>
+<PROPERTY>rdf:remotecontroltypeoriginallysuppliedbymanufacturer</PROPERTY>
+<PROPERTY>rdf:frontinputconnectors</PROPERTY>
+<PROPERTY>rdf:speakerpower</PROPERTY>
+<PROPERTY>rdf:supportedresolutions</PROPERTY>
+<PROPERTY>rdf:rearoutputconnectors</PROPERTY>
+<PROPERTY>rdf:energystar</PROPERTY>
+<PROPERTY>rdf:rearinputconnectors</PROPERTY>
+<PROPERTY>rdf:producthighlights</PROPERTY>
+<PROPERTY>rdf:roomtype</PROPERTY>
+<PROPERTY>rdf:msrp</PROPERTY>
+<PROPERTY>rdf:manufacturerwebsiteaddress</PROPERTY>
+<PROPERTY>rdf:mainfeatures</PROPERTY>
+<PROPERTY>rdf:internetservices</PROPERTY>
+<PROPERTY>rdf:localdiming</PROPERTY>
+<PROPERTY>rdf:remotecontrolmodel</PROPERTY>
+<PROPERTY>rdf:audiosurround</PROPERTY>
+<PROPERTY>rdf:backlighttype</PROPERTY>
+<PROPERTY>rdf:industrial</PROPERTY>
+<PROPERTY>rdf:assembledproductdimensionslxwxh</PROPERTY>
+<PROPERTY>rdf:digitalvideoformats</PROPERTY>
+<PROPERTY>rdf:languages</PROPERTY>
+<PROPERTY>rdf:productdimensions</PROPERTY>
+<PROPERTY>rdf:batteriesrequired</PROPERTY>
+<PROPERTY>rdf:numberofchannels</PROPERTY>
+<PROPERTY>rdf:productaccessoriesincluded</PROPERTY>
+<PROPERTY>rdf:interfacetype</PROPERTY>
+<PROPERTY>rdf:hastouchscreen</PROPERTY>
+<PROPERTY>rdf:containsbatteries</PROPERTY>
+<PROPERTY>rdf:seriestitle</PROPERTY>
+<PROPERTY>rdf:videogameplatform</PROPERTY>
+<PROPERTY>rdf:manufacturerpartnumber</PROPERTY>
+<PROPERTY>rdf:hasintegratedspeakers</PROPERTY>
+<PROPERTY>rdf:screenrefreshrate</PROPERTY>
+<PROPERTY>rdf:productnumber</PROPERTY>
+<PROPERTY>rdf:wattschannel</PROPERTY>
+<PROPERTY>rdf:compositeinputs</PROPERTY>
+<PROPERTY>rdf:audiooutputs</PROPERTY>
+<PROPERTY>rdf:sleepwakeuptimer</PROPERTY>
+<PROPERTY>rdf:speakeroutputpower</PROPERTY>
+<PROPERTY>rdf:vesamounting</PROPERTY>
+<PROPERTY>rdf:languageoptions</PROPERTY>
+<PROPERTY>rdf:hdmiinputs</PROPERTY>
+<PROPERTY>rdf:componentvideoinputs</PROPERTY>
+<PROPERTY>rdf:energystarqualified</PROPERTY>
+<PROPERTY>rdf:soundleveler</PROPERTY>
+<PROPERTY>rdf:hdmipcinput</PROPERTY>
+<PROPERTY>rdf:channeljump</PROPERTY>
+<PROPERTY>rdf:channelaudioout</PROPERTY>
+<PROPERTY>rdf:autoshutoff</PROPERTY>
+<PROPERTY>rdf:advancedautovolume</PROPERTY>
+<PROPERTY>rdf:outputconnectors</PROPERTY>
+<PROPERTY>rdf:headphonespeakerlink</PROPERTY>
+<PROPERTY>rdf:sonyoriginalsurround</PROPERTY>
+<PROPERTY>rdf:mhl</PROPERTY>
+<PROPERTY>rdf:colorsystem</PROPERTY>
+<PROPERTY>rdf:autophotomode</PROPERTY>
+<PROPERTY>rdf:mhlversion</PROPERTY>
+<PROPERTY>rdf:powerconsumptioninoperationmax</PROPERTY>
+<PROPERTY>rdf:powerrequirementsvoltage</PROPERTY>
+<PROPERTY>rdf:widemode</PROPERTY>
+<PROPERTY>rdf:operaappssystem</PROPERTY>
+<PROPERTY>rdf:compositevideoinputs</PROPERTY>
+<PROPERTY>rdf:speakerstotal</PROPERTY>
+<PROPERTY>rdf:screenmirroringmiracast</PROPERTY>
+<PROPERTY>rdf:cinemotionreverse</PROPERTY>
+<PROPERTY>rdf:dynamicbacklightcontrol</PROPERTY>
+<PROPERTY>rdf:signaltosoundarchitecture</PROPERTY>
+<PROPERTY>rdf:digitaloutformat</PROPERTY>
+<PROPERTY>rdf:componentvideoypbprinputs</PROPERTY>
+<PROPERTY>rdf:channelsurf</PROPERTY>
+<PROPERTY>rdf:wifidirect</PROPERTY>
+<PROPERTY>rdf:multiplelanguagedisplay</PROPERTY>
+<PROPERTY>rdf:infobanner</PROPERTY>
+<PROPERTY>rdf:hdcp</PROPERTY>
+<PROPERTY>rdf:clearphase</PROPERTY>
+<PROPERTY>rdf:backlightoffmode</PROPERTY>
+<PROPERTY>rdf:hdmiconnectionstotal</PROPERTY>
+<PROPERTY>rdf:smaster</PROPERTY>
+<PROPERTY>rdf:powerconsumptioninstandby</PROPERTY>
+<PROPERTY>rdf:channelcoveragedigitalterrestrial</PROPERTY>
+<PROPERTY>rdf:hotelmodemenu</PROPERTY>
+<PROPERTY>rdf:autowide</PROPERTY>
+<PROPERTY>rdf:wififrequency</PROPERTY>
+<PROPERTY>rdf:usbplay</PROPERTY>
+<PROPERTY>rdf:onscreenclock</PROPERTY>
+<PROPERTY>rdf:analogaudioinputstotal</PROPERTY>
+<PROPERTY>rdf:audiopoweroutput</PROPERTY>
+<PROPERTY>rdf:braviasync</PROPERTY>
+<PROPERTY>rdf:photosharingplusphotoshare</PROPERTY>
+<PROPERTY>rdf:tvsystemanalog</PROPERTY>
+<PROPERTY>rdf:showhidechannels</PROPERTY>
+<PROPERTY>rdf:rfconnectioninputs</PROPERTY>
+<PROPERTY>rdf:phototvhd</PROPERTY>
+<PROPERTY>rdf:usbplaycontents</PROPERTY>
+<PROPERTY>rdf:screensizecm</PROPERTY>
+<PROPERTY>rdf:netad</PROPERTY>
+<PROPERTY>rdf:numberoftunersterrestrialcable</PROPERTY>
+<PROPERTY>rdf:usb</PROPERTY>
+<PROPERTY>rdf:parentalcontrol</PROPERTY>
+<PROPERTY>rdf:channelcoveragedigitalcable</PROPERTY>
+<PROPERTY>rdf:channelblockwithpassword</PROPERTY>
+<PROPERTY>rdf:dimmingtype</PROPERTY>
+<PROPERTY>rdf:internetbrowser</PROPERTY>
+<PROPERTY>rdf:stereosystem</PROPERTY>
+<PROPERTY>rdf:livecolortechnology</PROPERTY>
+<PROPERTY>rdf:advancedcontrastenhancerace</PROPERTY>
+<PROPERTY>rdf:tvsideview</PROPERTY>
+<PROPERTY>rdf:wificertified</PROPERTY>
+<PROPERTY>rdf:closedcaptionscc</PROPERTY>
+<PROPERTY>rdf:digitalaudiooutputs</PROPERTY>
+<PROPERTY>rdf:viewingangleupdown</PROPERTY>
+<PROPERTY>rdf:internetepg</PROPERTY>
+<PROPERTY>rdf:powerrequirementsfrequency</PROPERTY>
+<PROPERTY>rdf:ptruecinematechnology</PROPERTY>
+<PROPERTY>rdf:onofftimer</PROPERTY>
+<PROPERTY>rdf:onetouchmirroring</PROPERTY>
+<PROPERTY>rdf:search</PROPERTY>
+<PROPERTY>rdf:viewinganglerightleft</PROPERTY>
+<PROPERTY>rdf:demomode</PROPERTY>
+<PROPERTY>rdf:automuteonnosignal</PROPERTY>
+<PROPERTY>rdf:tvtweet</PROPERTY>
+<PROPERTY>rdf:dlnacontent</PROPERTY>
+<PROPERTY>rdf:rsccontrol</PROPERTY>
+<PROPERTY>rdf:channelcoverageanalog</PROPERTY>
+<PROPERTY>rdf:finishsurfacecolor</PROPERTY>
+<PROPERTY>rdf:acpowerinput</PROPERTY>
+<PROPERTY>rdf:picturemode</PROPERTY>
+<PROPERTY>rdf:tvsystemdigitalterrestrial</PROPERTY>
+<PROPERTY>rdf:blinkingtype</PROPERTY>
+<PROPERTY>rdf:powersavingmodes</PROPERTY>
+<PROPERTY>rdf:wifistandard</PROPERTY>
+<PROPERTY>rdf:tvsystemdigitalcable</PROPERTY>
+<PROPERTY>rdf:faceareadetection</PROPERTY>
+<PROPERTY>rdf:relatedsearch</PROPERTY>
+<PROPERTY>rdf:labelinputs</PROPERTY>
+<PROPERTY>rdf:twinpicture</PROPERTY>
+<PROPERTY>rdf:dolby</PROPERTY>
+<PROPERTY>rdf:editchannellabels</PROPERTY>
+<PROPERTY>rdf:archdmiaudioreturnchannel</PROPERTY>
+<PROPERTY>rdf:onscreendisplayforexternalinput</PROPERTY>
+<PROPERTY>rdf:headphoneoutputs</PROPERTY>
+<PROPERTY>rdf:subwooferout</PROPERTY>
+<PROPERTY>rdf:speakerconfiguration</PROPERTY>
+<PROPERTY>rdf:ethernetconnections</PROPERTY>
+<PROPERTY>rdf:hdmipcinputformat</PROPERTY>
+<PROPERTY>rdf:speakerposition</PROPERTY>
+<PROPERTY>rdf:videoprocessing</PROPERTY>
+<PROPERTY>rdf:motionflowtechnology</PROPERTY>
+<PROPERTY>rdf:rscinputs</PROPERTY>
+<PROPERTY>rdf:compatibletvtype</PROPERTY>
+<PROPERTY>rdf:lengthofcord</PROPERTY>
+<PROPERTY>rdf:batterylife</PROPERTY>
+<PROPERTY>rdf:powersource</PROPERTY>
+<PROPERTY>rdf:numberofshots</PROPERTY>
+<PROPERTY>rdf:exposuretime</PROPERTY>
+<PROPERTY>rdf:timerdelay</PROPERTY>
+<PROPERTY>rdf:interval</PROPERTY>
+<PROPERTY>rdf:operatingtemperature</PROPERTY>
+<PROPERTY>rdf:compatibletvbrand</PROPERTY>
+<PROPERTY>rdf:compatiblewith</PROPERTY>
+<PROPERTY>rdf:streamingservice</PROPERTY>
+<PROPERTY>rdf:wattageoperational</PROPERTY>
+<PROPERTY>rdf:processortype</PROPERTY>
+<PROPERTY>rdf:rmsoutputpower</PROPERTY>
+<PROPERTY>rdf:dlna</PROPERTY>
+<PROPERTY>rdf:vesa</PROPERTY>
+<PROPERTY>rdf:wifi</PROPERTY>
+<PROPERTY>rdf:ethernet</PROPERTY>
+<PROPERTY>rdf:wattagestandby</PROPERTY>
+<PROPERTY>rdf:motionenhancementtechnology</PROPERTY>
+<PROPERTY>rdf:exteriorcolor</PROPERTY>
+<PROPERTY>rdf:tvparttypes</PROPERTY>
+<PROPERTY>rdf:substituteparts</PROPERTY>
+<PROPERTY>rdf:importantmessage</PROPERTY>
+<PROPERTY>rdf:important</PROPERTY>
+<PROPERTY>rdf:partusage</PROPERTY>
+<PROPERTY>rdf:boardnumbers</PROPERTY>
+<PROPERTY>rdf:panelstickernumber</PROPERTY>
+<PROPERTY>rdf:compatibletvmodels</PROPERTY>
+<PROPERTY>rdf:compatibletvbrands</PROPERTY>
+<PROPERTY>rdf:parttype</PROPERTY>
+<PROPERTY>rdf:mfrpartnumber</PROPERTY>
+<PROPERTY>rdf:notescommentsadditionalinformation</PROPERTY>
+<PROPERTY>rdf:boardnumber</PROPERTY>
+<PROPERTY>rdf:televisiontype</PROPERTY>
+<PROPERTY>rdf:isremotecontrolincluded</PROPERTY>
+<PROPERTY>rdf:features</PROPERTY>
+<PROPERTY>rdf:assembledproductweight</PROPERTY>
+<PROPERTY>rdf:supportedaudioformats</PROPERTY>
+<PROPERTY>rdf:ports</PROPERTY>
+<PROPERTY>rdf:website</PROPERTY>
+<PROPERTY>rdf:launchyear</PROPERTY>
+<PROPERTY>rdf:headphonejack</PROPERTY>
+<PROPERTY>rdf:pictureengine</PROPERTY>
+<PROPERTY>rdf:analogtvreception</PROPERTY>
+<PROPERTY>rdf:soundoptimizer</PROPERTY>
+<PROPERTY>rdf:supportedmemorycards</PROPERTY>
+<PROPERTY>rdf:curved</PROPERTY>
+<PROPERTY>rdf:displaycoating</PROPERTY>
+<PROPERTY>rdf:builtindvdplayer</PROPERTY>
+<PROPERTY>rdf:cablesincluded</PROPERTY>
+<PROPERTY>rdf:regioncode</PROPERTY>
+<PROPERTY>rdf:led</PROPERTY>
+<PROPERTY>rdf:internetstreaming</PROPERTY>
+<PROPERTY>rdf:componentinports</PROPERTY>
+<PROPERTY>rdf:mountingfeatures</PROPERTY>
+<PROPERTY>rdf:ethernettechnology</PROPERTY>
+<PROPERTY>rdf:compositeinav</PROPERTY>
+<PROPERTY>rdf:rsc</PROPERTY>
+<PROPERTY>rdf:emanual</PROPERTY>
+<PROPERTY>rdf:productweightwithstand</PROPERTY>
+<PROPERTY>rdf:usermanual</PROPERTY>
+<PROPERTY>rdf:electronicprogramguidechannelguide</PROPERTY>
+<PROPERTY>rdf:vesawallmountcompatibility</PROPERTY>
+<PROPERTY>rdf:shippingsizewxhxd</PROPERTY>
+<PROPERTY>rdf:osdlanguage</PROPERTY>
+<PROPERTY>rdf:wattage</PROPERTY>
+<PROPERTY>rdf:tvtomobilemirroring</PROPERTY>
+<PROPERTY>rdf:remote</PROPERTY>
+<PROPERTY>rdf:motionrate</PROPERTY>
+<PROPERTY>rdf:productsizewxhxdwithstand</PROPERTY>
+<PROPERTY>rdf:powercable</PROPERTY>
+<PROPERTY>rdf:purcolorcoloraccuracy</PROPERTY>
+<PROPERTY>rdf:smarthub</PROPERTY>
+<PROPERTY>rdf:processor</PROPERTY>
+<PROPERTY>rdf:dimmingtechnology</PROPERTY>
+<PROPERTY>rdf:dtvtuner</PROPERTY>
+<PROPERTY>rdf:uhdupscaling</PROPERTY>
+<PROPERTY>rdf:rfinterrestrialcableinput</PROPERTY>
+<PROPERTY>rdf:vchip</PROPERTY>
+<PROPERTY>rdf:digitalaudiooutoptical</PROPERTY>
+<PROPERTY>rdf:speakertype</PROPERTY>
+<PROPERTY>rdf:connectshare</PROPERTY>
+<PROPERTY>rdf:ultraclearpanel</PROPERTY>
+<PROPERTY>rdf:ecosensor</PROPERTY>
+<PROPERTY>rdf:yes</PROPERTY>
+<PROPERTY>rdf:soundoutputrms</PROPERTY>
+<PROPERTY>rdf:powersupplyv</PROPERTY>
+<PROPERTY>rdf:standbypowerconsumption</PROPERTY>
+<PROPERTY>rdf:mobiletotvmirroringdlna</PROPERTY>
+<PROPERTY>rdf:soundeffect</PROPERTY>
+<PROPERTY>rdf:appsplatform</PROPERTY>
+<PROPERTY>rdf:bdwiseplus</PROPERTY>
+<PROPERTY>rdf:audiooutminijack</PROPERTY>
+<PROPERTY>rdf:standtypecolor</PROPERTY>
+<PROPERTY>rdf:dtspremiumsound</PROPERTY>
+<PROPERTY>rdf:shippingweight</PROPERTY>
+<PROPERTY>rdf:productweightwithoutstand</PROPERTY>
+<PROPERTY>rdf:anynethdmicec</PROPERTY>
+<PROPERTY>rdf:closedcaptioning</PROPERTY>
+<PROPERTY>rdf:depthenhancingtechnology</PROPERTY>
+<PROPERTY>rdf:component</PROPERTY>
+<PROPERTY>rdf:smartevolutionready</PROPERTY>
+<PROPERTY>rdf:tvtype</PROPERTY>
+<PROPERTY>rdf:containedbatterytype</PROPERTY>
+<PROPERTY>rdf:itemcondition</PROPERTY>
+<PROPERTY>rdf:smartview</PROPERTY>
+<PROPERTY>rdf:rvu</PROPERTY>
+<PROPERTY>rdf:standtype</PROPERTY>
+<PROPERTY>rdf:nanocrystalcolor</PROPERTY>
+<PROPERTY>rdf:briefingontv</PROPERTY>
+<PROPERTY>rdf:bluetooth</PROPERTY>
+<PROPERTY>rdf:easypairing</PROPERTY>
+<PROPERTY>rdf:motioncontrol</PROPERTY>
+<PROPERTY>rdf:fire</PROPERTY>
+<PROPERTY>rdf:frontoutputconnectors</PROPERTY>
+<PROPERTY>rdf:board</PROPERTY>
+<PROPERTY>rdf:doesnotapply</PROPERTY>
+<PROPERTY>rdf:tcon</PROPERTY>
+<PROPERTY>rdf:cd</PROPERTY>
+<PROPERTY>rdf:lg</PROPERTY>
+<PROPERTY>rdf:panelnumber</PROPERTY>
+<PROPERTY>rdf:warehouselocation</PROPERTY>
+<PROPERTY>rdf:countryofmanufacture</PROPERTY>
+<PROPERTY>rdf:supportedmodels</PROPERTY>
+<PROPERTY>rdf:tvmodelno</PROPERTY>
+<PROPERTY>rdf:supportedspecifications</PROPERTY>
+<PROPERTY>rdf:tvtypeno</PROPERTY>
+<PROPERTY>rdf:specifications</PROPERTY>
+<PROPERTY>rdf:tvmodelcode</PROPERTY>
+<PROPERTY>rdf:tvversionno</PROPERTY>
+<PROPERTY>rdf:marketinginformation</PROPERTY>
+<PROPERTY>rdf:touchscreen</PROPERTY>
+<PROPERTY>rdf:hdtv</PROPERTY>
+<PROPERTY>rdf:standdesign</PROPERTY>
+<PROPERTY>rdf:pictureframemode</PROPERTY>
+<PROPERTY>rdf:inputskip</PROPERTY>
+<PROPERTY>rdf:soundbooster</PROPERTY>
+<PROPERTY>rdf:skinnaturalizer</PROPERTY>
+<PROPERTY>rdf:panorama</PROPERTY>
+<PROPERTY>rdf:illuminationled</PROPERTY>
+<PROPERTY>rdf:reflector</PROPERTY>
+<PROPERTY>rdf:startupsonylogodisplay</PROPERTY>
+<PROPERTY>rdf:alternateaudiodigital</PROPERTY>
+<PROPERTY>rdf:hdmiinstaport</PROPERTY>
+<PROPERTY>rdf:pictureadjustmentslock</PROPERTY>
+<PROPERTY>rdf:usbsupermultiformatplay</PROPERTY>
+<PROPERTY>rdf:familyline</PROPERTY>
+<PROPERTY>rdf:standpart</PROPERTY>
+<PROPERTY>rdf:screwsincluded</PROPERTY>
+<PROPERTY>rdf:tvcompatibility</PROPERTY>
+<PROPERTY>rdf:standcondition</PROPERTY>
+<PROPERTY>rdf:fitstvscreensizeupto</PROPERTY>
+<PROPERTY>rdf:family</PROPERTY>
+<PROPERTY>rdf:quantity</PROPERTY>
+<PROPERTY>rdf:actualweight</PROPERTY>
+<PROPERTY>rdf:pn</PROPERTY>
+<PROPERTY>rdf:dsuperresolution</PROPERTY>
+<PROPERTY>rdf:seamlessstreaming</PROPERTY>
+<PROPERTY>rdf:xwidgetsystem</PROPERTY>
+<PROPERTY>rdf:senseofquartz</PROPERTY>
+<PROPERTY>rdf:sonyentertainmentnetwork</PROPERTY>
+<PROPERTY>rdf:simulatedd</PROPERTY>
+<PROPERTY>rdf:triluminosdisplay</PROPERTY>
+<PROPERTY>rdf:dformatsupport</PROPERTY>
+<PROPERTY>rdf:textsearch</PROPERTY>
+<PROPERTY>rdf:dsynctransmitterintegrated</PROPERTY>
+<PROPERTY>rdf:fastzapping</PROPERTY>
+<PROPERTY>rdf:googletvsync</PROPERTY>
+<PROPERTY>rdf:autoddepthadjustment</PROPERTY>
+<PROPERTY>rdf:bivlsystem</PROPERTY>
+<PROPERTY>rdf:skype</PROPERTY>
+<PROPERTY>rdf:deepblackpanel</PROPERTY>
+<PROPERTY>rdf:version</PROPERTY>
+<PROPERTY>rdf:powerconsumptionoperational</PROPERTY>
+<PROPERTY>rdf:hdmiportsqty</PROPERTY>
+<PROPERTY>rdf:lcdbacklighttechnology</PROPERTY>
+<PROPERTY>rdf:analogtvtuner</PROPERTY>
+<PROPERTY>rdf:speakersystem</PROPERTY>
+<PROPERTY>rdf:internetstreamingservices</PROPERTY>
+<PROPERTY>rdf:stereoreceptionsystem</PROPERTY>
+<PROPERTY>rdf:manufacturerwarranty</PROPERTY>
+<PROPERTY>rdf:hdcpcompatible</PROPERTY>
+<PROPERTY>rdf:multichannelpreview</PROPERTY>
+<PROPERTY>rdf:ptechnology</PROPERTY>
+<PROPERTY>rdf:dimensionswxdxh</PROPERTY>
+<PROPERTY>rdf:diagonalsize</PROPERTY>
+<PROPERTY>rdf:power</PROPERTY>
+<PROPERTY>rdf:ean</PROPERTY>
+<PROPERTY>rdf:grade</PROPERTY>
+<PROPERTY>rdf:knownmodels</PROPERTY>
+<PROPERTY>rdf:knownpartnumbers</PROPERTY>
+<PROPERTY>rdf:tvmodel</PROPERTY>
+        <TYPE>NT</TYPE>
+    </SOURCE>
+    <TARGET>
+        <ID>off</ID>
+        <ENDPOINT>C:/Users/Alexander/Desktop/data_phones/datasets/tvs/catalog_resource_filled2.nt</ENDPOINT>
+        <VAR>?x</VAR>
+        <PAGESIZE>-1</PAGESIZE>
+        <RESTRICTION>?x</RESTRICTION>
+        <PROPERTY>rdf:compatiblechannels</PROPERTY>
+<PROPERTY>rdf:producttype</PROPERTY>
+<PROPERTY>rdf:wattageoperational</PROPERTY>
+<PROPERTY>rdf:yearlyconsumption</PROPERTY>
+<PROPERTY>rdf:viewablesize</PROPERTY>
+<PROPERTY>rdf:totalsize</PROPERTY>
+<PROPERTY>rdf:d</PROPERTY>
+<PROPERTY>rdf:dtechnology</PROPERTY>
+<PROPERTY>rdf:series</PROPERTY>
+<PROPERTY>rdf:computeroperatingsystem</PROPERTY>
+<PROPERTY>rdf:tvtuner</PROPERTY>
+<PROPERTY>rdf:builtindvdplayer</PROPERTY>
+<PROPERTY>rdf:videointerface</PROPERTY>
+<PROPERTY>rdf:hdmiports</PROPERTY>
+<PROPERTY>rdf:pcinterface</PROPERTY>
+<PROPERTY>rdf:hdcpcompatability</PROPERTY>
+<PROPERTY>rdf:timerfunctions</PROPERTY>
+<PROPERTY>rdf:stand</PROPERTY>
+<PROPERTY>rdf:width</PROPERTY>
+<PROPERTY>rdf:depth</PROPERTY>
+<PROPERTY>rdf:height</PROPERTY>
+<PROPERTY>rdf:weight</PROPERTY>
+<PROPERTY>rdf:color</PROPERTY>
+<PROPERTY>rdf:displayresolution</PROPERTY>
+<PROPERTY>rdf:displaytype</PROPERTY>
+<PROPERTY>rdf:imageaspectratio</PROPERTY>
+<PROPERTY>rdf:motionenhancementtechnology</PROPERTY>
+<PROPERTY>rdf:refreshrate</PROPERTY>
+<PROPERTY>rdf:ptechnology</PROPERTY>
+<PROPERTY>rdf:backlighttechnology</PROPERTY>
+<PROPERTY>rdf:imagecontrast</PROPERTY>
+<PROPERTY>rdf:brightness</PROPERTY>
+<PROPERTY>rdf:widescreenmodes</PROPERTY>
+<PROPERTY>rdf:viewingangle</PROPERTY>
+<PROPERTY>rdf:responsetime</PROPERTY>
+<PROPERTY>rdf:supportedlanguages</PROPERTY>
+<PROPERTY>rdf:commercialfeatures</PROPERTY>
+<PROPERTY>rdf:standdesign</PROPERTY>
+<PROPERTY>rdf:standcolor</PROPERTY>
+<PROPERTY>rdf:analogtvtuner</PROPERTY>
+<PROPERTY>rdf:stereoreceptionsystem</PROPERTY>
+<PROPERTY>rdf:secondaryaudioprogram</PROPERTY>
+<PROPERTY>rdf:digitaltvtuner</PROPERTY>
+<PROPERTY>rdf:inputvideoformats</PROPERTY>
+<PROPERTY>rdf:supportedcomputerresolution</PROPERTY>
+<PROPERTY>rdf:channellock</PROPERTY>
+<PROPERTY>rdf:closedcaptioncapability</PROPERTY>
+<PROPERTY>rdf:supportedmemorycards</PROPERTY>
+<PROPERTY>rdf:supportedvideoformats</PROPERTY>
+<PROPERTY>rdf:supportedaudioformats</PROPERTY>
+<PROPERTY>rdf:supportedpictureformats</PROPERTY>
+<PROPERTY>rdf:usbports</PROPERTY>
+<PROPERTY>rdf:memory</PROPERTY>
+<PROPERTY>rdf:remotecontrolmodel</PROPERTY>
+<PROPERTY>rdf:digitalaudioformat</PROPERTY>
+<PROPERTY>rdf:audiosurround</PROPERTY>
+<PROPERTY>rdf:speakersqty</PROPERTY>
+<PROPERTY>rdf:speakerstype</PROPERTY>
+<PROPERTY>rdf:connectivity</PROPERTY>
+<PROPERTY>rdf:wifiprotocol</PROPERTY>
+<PROPERTY>rdf:internetservices</PROPERTY>
+<PROPERTY>rdf:dlna</PROPERTY>
+<PROPERTY>rdf:batteriesincluded</PROPERTY>
+<PROPERTY>rdf:voltage</PROPERTY>
+<PROPERTY>rdf:wattagestandby</PROPERTY>
+<PROPERTY>rdf:warranty</PROPERTY>
+<PROPERTY>rdf:dimensionswithstand</PROPERTY>
+<PROPERTY>rdf:dimensionswithoutstand</PROPERTY>
+<PROPERTY>rdf:packagewidth</PROPERTY>
+<PROPERTY>rdf:packagedepth</PROPERTY>
+<PROPERTY>rdf:packageheight</PROPERTY>
+<PROPERTY>rdf:packageweight</PROPERTY>
+<PROPERTY>rdf:brand</PROPERTY>
+<PROPERTY>rdf:model</PROPERTY>
+<PROPERTY>rdf:mpn</PROPERTY>
+<PROPERTY>rdf:productgtin</PROPERTY>
+        <TYPE>NT</TYPE>
+    </TARGET>
+        
+    <MLALGORITHM>
+        <NAME>EAGLE</NAME>
+        <TYPE>supervised active</TYPE>
+		<PARAMETER>
+		<NAME>inquiry_size</NAME>
+		<VALUE>5</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>population</NAME>
+		<VALUE>50</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>preserve_fittest</NAME>
+		<VALUE>true</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>generations</NAME>
+		<VALUE>25</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>max_quality</NAME>
+		<VALUE>0.999999999</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>elitism</NAME>
+		<VALUE>5</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>reproduction_rate</NAME>
+		<VALUE>0.0</VALUE>
+		</PARAMETER>
+		<PARAMETER>
+		<NAME>simple_fitness</NAME>
+		<VALUE>false</VALUE>
+		</PARAMETER>
+    </MLALGORITHM>
+    <ACCEPTANCE>
+        <THRESHOLD>0.2</THRESHOLD>
+        <FILE>acceptance.nt</FILE>
+        <RELATION>owl:sameAs</RELATION>
+    </ACCEPTANCE>
+    <REVIEW>
+        <THRESHOLD>0.1</THRESHOLD>
+        <FILE>review.nt</FILE>
+        <RELATION>owl:sameAs</RELATION>
+    </REVIEW>
+       <EXECUTION>
+          <REWRITER>default</REWRITER>
+          <PLANNER>default</PLANNER>
+          <ENGINE>default</ENGINE>
+         </EXECUTION>
+    <OUTPUT>NT</OUTPUT>
+</LIMES>
