@@ -2,8 +2,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>limes-core</artifactId>
     <name>LIMES</name>
-    <description>LIMES – Link Discovery Framework for Metric Spaces.</description>
-    <url>http://aksw.org/Projects/LIMES</url>
+    <description>ModLIMES – Link Discovery Framework for Metric Spaces.</description>
+    <url>https://github.com/XLexxaX/Limes_v2</url>
 
     <parent>
         <groupId>org.aksw.limes</groupId>

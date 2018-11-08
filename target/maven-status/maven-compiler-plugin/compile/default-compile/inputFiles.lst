@@ -48,6 +48,7 @@ B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\conf
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\mapper\pointsets\Polygon.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\preprocessing\PreprocessingFunctionType.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\cache\ACache.java
+B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\controller\GoldStandardBatchReader.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\cache\FileCache.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\pointsets\hausdorff\NaiveHausdorffMeasure.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\mapper\space\blocking\EuclideanBlockingModule.java
@@ -68,7 +69,6 @@ B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\evaluat
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\execution\rewriter\Rewriter.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\SupervisedMLAlgorithm.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\parser\Parser.java
-B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\controller\Server.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\evaluation\oracle\OracleFactory.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\MLImplementationType.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\preprocessing\functions\RemoveNonAlphanumeric.java
@@ -150,6 +150,7 @@ B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\prep
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\UnsupervisedMLAlgorithm.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\space\EuclideanMeasure.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\config\reader\rdf\LIMES.java
+B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\controller\MultiCaller.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\pointsets\APointsetsMeasure.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\temporal\allenAlgebra\DuringReverseMeasure.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\LearningParameter.java
@@ -268,6 +269,7 @@ B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measure
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\resourcesets\SetJaccardMeasure.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\io\config\Configuration.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\eagle\genes\AtomicPreprocessingCommand.java
+B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\controller\RunConfiguration.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\mapper\MappingOperations.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\dragon\Utils\InstanceCalculator.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\temporal\TemporalMeasure.java
@@ -315,6 +317,7 @@ B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algo
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\execution\rewriter\RewriterFactory.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\space\BlockIdGenerator.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\mapper\topology\WithinMapper.java
+B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\controller\ConfigChecker.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\controller\Controller.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\dragon\FitnessFunctions\GiniIndex.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\evaluation\evaluationDataLoader\OAEIMappingParser.java
@@ -332,6 +335,7 @@ B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\executi
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\pointsets\max\NaiveMaxMeasure.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\temporal\allenAlgebra\EqualsMeasure.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\eagle\util\CacheTrimmer.java
+B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\controller\TrainTestResults.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\dragon\Pruning\ErrorEstimatePruning.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\dragon\Pruning\GlobalFMeasurePruning.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\matching\LabelBasedClassMapper.java
@@ -387,7 +391,6 @@ B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measure
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\temporal\allenAlgebra\IsStartedByMeasure.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\ml\algorithm\wombat\RefinementNode.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\temporal\simpleTemporal\SuccessorMeasure.java
-B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\controller\SimpleServer.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\mapper\temporal\allenAlgebra\complex\BeforeMapper.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\util\DataGenerator.java
 B:\Development\limes3\limes\limes-core\src\main\java\org\aksw\limes\core\measures\measure\temporal\allenAlgebra\StartsMeasure.java

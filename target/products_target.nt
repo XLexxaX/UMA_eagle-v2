@@ -1,8 +1,0 @@
-<http://uni.somelinespec.assortment/19bbcbe4-5d36-43e0-9b23-e6a76e96f751> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> .
-<http://uni.somelinespec.assortment/19bbcbe4-5d36-43e0-9b23-e6a76e96f751> <http://www.w3.org/1999/02/22-rdf-syntax-ns#weight> "about 150g" .
-<http://uni.somelinespec.assortment/19bbcbe4-5d36-43e0-9b23-e6a76e96f751> <http://www.w3.org/1999/02/22-rdf-syntax-ns#color> "dark-blue" .
-<http://uni.somelinespec.assortment/19bbcbe4-5d36-43e0-9b23-e6a76e96f751> <http://www.w3.org/1999/02/22-rdf-syntax-ns#brand> "Medion" .
-<http://uni.somelinespec.assortment/b34f869d-7a06-4135-826a-73e433ff9e4a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> .
-<http://uni.somelinespec.assortment/b34f869d-7a06-4135-826a-73e433ff9e4a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#weight> "199g" . 
-<http://uni.somelinespec.assortment/b34f869d-7a06-4135-826a-73e433ff9e4a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#modelnum> "14586972" . 
-<http://uni.somelinespec.assortment/b34f869d-7a06-4135-826a-73e433ff9e4a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#brand> "LG Electronics" .

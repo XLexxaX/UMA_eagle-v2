@@ -5,6 +5,7 @@ org\aksw\limes\core\io\config\writer\XMLConfigurationWriter.class
 org\aksw\limes\core\evaluation\qualititativeMeasures\PseudoRefPrecision.class
 org\aksw\limes\core\ml\algorithm\eagle\core\ExpressionProblem.class
 org\aksw\limes\core\measures\mapper\topology\IntersectsMapper.class
+org\aksw\limes\core\controller\GoldStandardBatchReader.class
 org\aksw\limes\core\util\ProgressBar.class
 org\aksw\limes\core\ml\algorithm\dragon\Dragon.class
 org\aksw\limes\core\measures\mapper\string\Position.class
@@ -35,7 +36,6 @@ org\aksw\limes\core\ml\algorithm\eagle\genes\NumberMeasure.class
 org\aksw\limes\core\ml\algorithm\UnsupervisedMLAlgorithm.class
 org\aksw\limes\core\measures\mapper\string\MongeElkanMapper.class
 org\aksw\limes\core\execution\planning\plan\IPlan.class
-org\aksw\limes\core\controller\Server$ResultsMessage.class
 org\aksw\limes\core\ml\algorithm\matching\stablematching\Hospital.class
 org\aksw\limes\core\execution\planning\planner\HeliosPlanner.class
 org\aksw\limes\core\evaluation\evaluationDataLoader\DataSetChooser$DataSets.class
@@ -55,7 +55,6 @@ org\aksw\limes\core\exceptions\MalformedPreprocessingFunctionException.class
 org\aksw\limes\core\ml\algorithm\eagle\genes\StringPreprocessingCommand.class
 org\aksw\limes\core\measures\measure\temporal\allenAlgebra\StartsMeasure.class
 org\aksw\limes\core\measures\measure\pointsets\benchmarking\borderModifier.class
-org\aksw\limes\core\controller\Server$1.class
 org\aksw\limes\core\measures\mapper\string\PartitionResult.class
 org\aksw\limes\core\io\query\IQueryModule.class
 org\aksw\limes\core\measures\measure\temporal\allenAlgebra\DuringMeasure.class
@@ -69,7 +68,6 @@ org\aksw\limes\core\execution\planning\plan\Instruction.class
 org\aksw\limes\core\execution\planning\planner\Planner.class
 org\aksw\limes\core\io\mapping\AMapping.class
 org\aksw\limes\core\ml\algorithm\MLAlgorithmFactory.class
-org\aksw\limes\core\controller\Server$ErrorMessage.class
 org\aksw\limes\core\ml\algorithm\euclid\LinearSelfConfigurator$QMeasureType.class
 org\aksw\limes\core\measures\measure\topology\CoversMeasure.class
 org\aksw\limes\core\measures\measure\temporal\allenAlgebra\BeforeMeasure.class
@@ -139,7 +137,6 @@ org\aksw\limes\core\measures\mapper\string\RatcliffObershelpMapper.class
 org\aksw\limes\core\io\preprocessing\functions\Concat.class
 org\aksw\limes\core\execution\planning\plan\Instruction$Command.class
 org\aksw\limes\core\evaluation\qualititativeMeasures\QualitativeMeasuresEvaluator.class
-org\aksw\limes\core\controller\Server$StatusMessage.class
 org\aksw\limes\core\measures\mapper\pointsets\PolygonIndex.class
 org\aksw\limes\core\ml\algorithm\eagle\genes\AtomicPreprocessingCommand.class
 org\aksw\limes\core\measures\mapper\temporal\allenAlgebra\complex\IsFinishedByMapper.class
@@ -161,11 +158,9 @@ org\aksw\limes\core\ml\algorithm\eagle\util\CacheTrimmer.class
 org\aksw\limes\core\ml\algorithm\eagle\util\PropertyMapping.class
 org\aksw\limes\core\ml\algorithm\LearningParameter.class
 org\aksw\limes\core\measures\measure\temporal\allenAlgebra\AfterMeasure.class
-org\aksw\limes\core\controller\SimpleServer$1.class
 org\aksw\limes\core\measures\mapper\pointsets\GeoHR3.class
 org\aksw\limes\core\measures\measure\temporal\allenAlgebra\DuringReverseMeasure.class
 org\aksw\limes\core\ml\algorithm\matching\PropertyMapper.class
-org\aksw\limes\core\controller\SimpleServer.class
 org\aksw\limes\core\ml\algorithm\euclid\LinearSelfConfigurator$1.class
 org\aksw\limes\core\execution\rewriter\IRewriter.class
 org\aksw\limes\core\measures\mapper\pointsets\PolygonReader.class
@@ -189,6 +184,7 @@ org\aksw\limes\core\measures\mapper\temporal\allenAlgebra\complex\EqualsMapper.c
 org\aksw\limes\core\ml\algorithm\eagle\genes\StringPreprocessingMeasure.class
 org\aksw\limes\core\ml\algorithm\wombat\AWombat.class
 org\aksw\limes\core\measures\measure\pointsets\surjection\FairSurjectionMeasure.class
+org\aksw\limes\core\controller\ConfigChecker.class
 org\aksw\limes\core\io\serializer\TTLSerializer.class
 org\aksw\limes\core\io\preprocessing\functions\RegexReplace.class
 org\aksw\limes\core\ml\algorithm\eagle\coala\Clustering.class
@@ -212,6 +208,7 @@ org\aksw\limes\core\measures\mapper\temporal\simpleTemporal\PredecessorMapper.cl
 org\aksw\limes\core\evaluation\evaluationDataLoader\DataSetChooser.class
 org\aksw\limes\core\io\preprocessing\IPreprocessingFunction.class
 org\aksw\limes\core\io\preprocessing\functions\RemoveLanguageTag.class
+org\aksw\limes\core\controller\TrainTestResults.class
 org\aksw\limes\core\io\mapping\writer\RDFMappingWriter.class
 org\aksw\limes\core\ml\algorithm\ACIDS.class
 org\aksw\limes\core\measures\mapper\temporal\simpleTemporal\ISimpleTemporalMapper.class
@@ -240,7 +237,6 @@ org\aksw\limes\core\io\mapping\writer\CSVMappingWriter.class
 org\aksw\limes\core\measures\mapper\string\compareQGramsResult.class
 org\aksw\limes\core\io\cache\HybridCache.class
 org\aksw\limes\core\measures\measure\temporal\allenAlgebra\IsMetByMeasure.class
-org\aksw\limes\core\controller\Server$StatusMessage$Status.class
 org\aksw\limes\core\measures\measure\pointsets\surjection\NaiveSurjectionMeasure.class
 org\aksw\limes\core\measures\measure\resourcesets\SetJaccardMeasure.class
 org\aksw\limes\core\measures\measure\temporal\allenAlgebra\IsStartedByMeasure.class
@@ -299,7 +295,6 @@ org\aksw\limes\core\io\config\IConfiguration.class
 org\aksw\limes\core\measures\measure\pointsets\APointsetsMeasure.class
 org\aksw\limes\core\ml\algorithm\dragon\FitnessFunctions\GiniIndex$Metric.class
 org\aksw\limes\core\measures\mapper\string\PPJoinPlusPlus.class
-org\aksw\limes\core\controller\SimpleServer$ExecuteHandler.class
 org\aksw\limes\core\ml\algorithm\eagle\genes\ChainedPreprocessingCommand.class
 org\aksw\limes\core\measures\mapper\MapperFactory.class
 org\aksw\limes\core\measures\measure\space\AMinkowskiMeasure.class
@@ -312,23 +307,22 @@ org\aksw\limes\core\ml\algorithm\eagle\genes\StringMeasure.class
 org\aksw\limes\core\io\preprocessing\functions\Replace.class
 org\aksw\limes\core\evaluation\qualititativeMeasures\IQualitativeMeasure.class
 org\aksw\limes\core\measures\measure\topology\TouchesMeasure.class
+org\aksw\limes\core\ml\algorithm\Eagle$PreparedGeneration.class
 org\aksw\limes\core\measures\mapper\space\blocking\BlockingFactory.class
 org\aksw\limes\core\evaluation\evaluationDataLoader\Experiment.class
 org\aksw\limes\core\measures\measure\temporal\allenAlgebra\IsOverlappedByMeasure.class
 org\aksw\limes\core\measures\mapper\temporal\allenAlgebra\IAllenAlgebraMapper.class
 org\aksw\limes\core\measures\mapper\resourcesets\SetJaccardMapper$NamedHashSet.class
-org\aksw\limes\core\controller\SimpleServer$GetStatusHandler.class
 org\aksw\limes\core\io\mapping\reader\AMappingReader.class
 org\aksw\limes\core\io\mapping\FileMapping.class
 org\aksw\limes\core\measures\mapper\temporal\allenAlgebra\complex\DuringMapper.class
 org\aksw\limes\core\ml\algorithm\AMLAlgorithm.class
 org\aksw\limes\core\measures\mapper\pointsets\Polygon.class
 org\aksw\limes\core\measures\measure\IMeasure.class
+org\aksw\limes\core\controller\RunConfiguration.class
 org\aksw\limes\core\measures\measure\pointsets\hausdorff\SymmetricHausdorffMeasure.class
 org\aksw\limes\core\ml\algorithm\classifier\ComplexClassifier.class
-org\aksw\limes\core\controller\SimpleServer$GetResultHandler.class
 org\aksw\limes\core\execution\engine\SimpleExecutionEngine.class
-org\aksw\limes\core\controller\Server.class
 org\aksw\limes\core\measures\mapper\temporal\allenAlgebra\complex\IsOverlappedByMapper.class
 org\aksw\limes\core\measures\mapper\string\EdPosition.class
 org\aksw\limes\core\measures\mapper\pointsets\OrchidMapper.class
@@ -336,7 +330,6 @@ org\aksw\limes\core\measures\mapper\topology\RADON.class
 org\aksw\limes\core\evaluation\qualititativeMeasures\PseudoFMeasure.class
 org\aksw\limes\core\io\config\reader\AConfigurationReader.class
 org\aksw\limes\core\measures\measure\AMeasure.class
-org\aksw\limes\core\controller\Server$SubmitMessage.class
 org\aksw\limes\core\measures\measure\pointsets\max\NaiveMaxMeasure.class
 org\aksw\limes\core\measures\measure\string\JaroMeasure.class
 org\aksw\limes\core\measures\mapper\temporal\allenAlgebra\atomic\EndBegin.class
@@ -345,7 +338,6 @@ org\aksw\limes\core\measures\mapper\topology\RADON$SquareIndex.class
 org\aksw\limes\core\measures\mapper\string\triefilter\TrieFilter$TrieNode.class
 org\aksw\limes\core\measures\measure\topology\EqualsMeasure.class
 org\aksw\limes\core\execution\planning\planner\IPlanner.class
-org\aksw\limes\core\controller\Server$ErrorMessage$Error.class
 org\aksw\limes\core\util\Clock.class
 org\aksw\limes\core\io\preprocessing\functions\RemoveBraces.class
 org\aksw\limes\core\io\ls\ExtendedLinkSpecification.class
@@ -369,6 +361,7 @@ org\aksw\limes\core\io\config\writer\IConfigurationWriter.class
 org\aksw\limes\core\measures\measure\pointsets\average\NaiveAverageMeasure.class
 org\aksw\limes\core\ml\algorithm\wombat\RefinementNode.class
 org\aksw\limes\core\measures\measure\pointsets\hausdorff\ScanIndexedHausdorffMeasure.class
+org\aksw\limes\core\controller\MultiCaller.class
 org\aksw\limes\core\evaluation\qualititativeMeasures\PseudoFM.class
 org\aksw\limes\core\ml\algorithm\MLAlgorithmFactory$1.class
 org\aksw\limes\core\execution\engine\ParallelExecutionEngine.class
@@ -425,7 +418,6 @@ org\aksw\limes\core\execution\engine\ExecutionEngine.class
 org\aksw\limes\core\ml\algorithm\dragon\Utils\InstanceCalculator.class
 org\aksw\limes\core\io\config\reader\xml\XMLConfigurationReader$1.class
 org\aksw\limes\core\measures\measure\temporal\simpleTemporal\PredecessorMeasure.class
-org\aksw\limes\core\controller\Server$ServerMessage.class
 org\aksw\limes\core\evaluation\evaluationDataLoader\DataSetChooser$1.class
 org\aksw\limes\core\measures\measure\pointsets\hausdorff\NaiveHausdorffMeasure.class
 org\aksw\limes\core\io\config\reader\xml\DtdChecker.class

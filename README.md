@@ -21,15 +21,21 @@ function will be used. This yields better results than the simple F1-score, but 
 - ELITISM: This parameter sets the number of best-performing individuals (linkage rules), that should survive an evolution.
 - ORIGINAL: If set to true, the original LIMES pipeline as implemented in Limes v1.5.1 on [Github](https://github.com/dice-group/LIMES) will be used. All mentioned 
 parameters won't take effect. 
+An exemplary application of the parameters can be seen in a sample configuration file for two headphone datasets [here](src/main/resources/datasets/headphones/headphones-allprops.xml).
+
 
 Running LIMES' active genetic learning module can be achieved in two ways:
 1. Importing the project as an "Existing maven project" into eclipse.
 In this case, you have to configure the variable "configFiles" in the MultiCaller.java file in the package src.main.java.org.aksw.limes.core.controller and fill the array
 with a number of paths to your config files.
-2. Running LIMES with the provided .jar-file in the target-folder. 
-In this case you need to define one configuration file in the command line with "java -jar limes-core-v2-SNAPSHOT.jar -i PATH\_TO\_YOUR\_CONFIG\_FILE". This way however lacks the 
-option to provide multiple configuration files to LIMES with just one call.
+2. Running LIMES with the provided .jar-file. 
+In this case you need to define one configuration file in the command line with "java -jar limes-core-v2-SNAPSHOT.jar PATH\_TO\_YOUR\_CONFIG\_FILE1.xml PATH\_TO\_YOUR\_NEXT_CONFIG\_FILE2.xml".
 
+#### Notes:
+- Keep in mind, that only Java 1.8 or higher is supported. The given snapshot [limes-core-v2-SNAPSHOT.jar](limes-core-v2-SNAPSHOT.jar) works with Java 1.8.
+- The server mode is removed from the project and the GUI doesn't have the optimizations described below. So only the console-mode is fully executable. 
+- In case you want to build the jar-file on your own machine work with this command: "mvn clean package shade:shade -Dcheckstyle.skip=true -Dmaven.test.skip=true". First you will need to download the original project from the official [Github page](https://github.com/dice-group/LIMES). Afterwards, delete the folder "limes-core" and then past the limes-core
+implementation from this repository into the root folder. Then run the above command.
 
 # Overview of the modifications to LIMES
 ### Fitness function
@@ -51,8 +57,8 @@ it more consistent with other genetic learning algorithms.
 
 # Modified files:
 The following list contains all classes, in which major modifications have been made to LIMES v1.5.1. Those modifications comprise of greater code sections and significantly change the behaviour of the EAGLE algorithm:
-- [Eagle.java](src/main/java/org/aksv/limes/core/ml/algorithm/Eagle.java) - The implementation of the active genetic learning, calling various submodules for f-score calculation and evolution.
-- [GoldStandardBatchReader.java](src/main/java/org/aksv/limes/core/controller/GoldStandardBatchReader.java) - Simulates the user providing gold-answers; also contains precise (actual) F-score calculation
-- [MLPipeline.java](src/main/java/org/aksv/limes/core/ml/algorithm/Eagle.java) - Kind of an overall controller for the execution of the EAGLE algorithm; controls the overall execution of active genetic learning and inquiries to the user.  
-- [MultiCaller.java](src/main/java/org/aksv/limes/core/controller/MultiCaller.java) - An upstream class for calling LIMES multiple times with different configurations.
+- [Eagle.java](src/main/java/org/aksw/limes/core/ml/algorithm/Eagle.java) - The implementation of the active genetic learning, calling various submodules for f-score calculation and evolution.
+- [GoldStandardBatchReader.java](src/main/java/org/aksw/limes/core/controller/GoldStandardBatchReader.java) - Simulates the user providing gold-answers; also contains precise (actual) F-score calculation
+- [MLPipeline.java](src/main/java/org/aksw/limes/core/ml/algorithm/Eagle.java) - Kind of an overall controller for the execution of the EAGLE algorithm; controls the overall execution of active genetic learning and inquiries to the user.  
+- [MultiCaller.java](src/main/java/org/aksw/limes/core/controller/MultiCaller.java) - An upstream class for calling LIMES multiple times with different configurations.
 A large number of additional modifications have been made; but those are just minor ones and do not significantly change the functionality of LIMES.

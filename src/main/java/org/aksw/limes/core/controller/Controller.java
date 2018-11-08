@@ -47,8 +47,6 @@ public class Controller {
 	private static final String DEFAULT_LOGGING_PATH = "limes.log";
 	private static final int MAX_ITERATIONS_NUMBER = 1;
 	private static Logger logger = null;
-	private static int defaultPort = 8080;
-	private static int defaultLimit = -1;
 	private static Options options = getOptions();
 
 	/**
@@ -59,42 +57,12 @@ public class Controller {
 	 */
 	public static void main(String[] args) {
 
-		// I. Configure Logger
-		CommandLine cmd = parseCommandLine(args);
-		System.setProperty("logFilename", cmd.hasOption('o') ? cmd.getOptionValue("o") : DEFAULT_LOGGING_PATH);
-		((org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false)).reconfigure();
-		logger = LoggerFactory.getLogger(Controller.class);
-		// II. Digest Options
-		if (cmd.hasOption('h')) {
-			printHelp();
-			System.exit(0);
-			// } else if (cmd.hasOption('g')){
-			// LimesGUI.startGUI(new String[0]);
-			// System.exit(0);
-		} else if (cmd.hasOption('s')) {
-			int port = defaultPort;
-			if (cmd.hasOption('p'))
-				port = Integer.parseInt(cmd.getOptionValue('p'));
-			int limit = defaultLimit;
-			if (cmd.hasOption('l'))
-				limit = Integer.parseInt(cmd.getOptionValue('l'));
-			// SimpleServer.startServer(port, limit);
-		} else {
-			// III. Has Arguments?
-			if (cmd.getArgs().length < 1) {
-				logger.error("Error:\n\t Please specify a configuration file to use!");
-				printHelp();
-				System.exit(1);
-			}
+		Controller ctr = new Controller();
+		ctr.run(args);
 
-			Configuration config = getConfig(cmd);
-			ResultMappings mappings = getMapping(config,
-					new GoldStandardBatchReader("C:/Users/Alexander/Desktop/data_phones/alignment.nt", ""));
-			writeResults(mappings, config);
-		}
 	}
 
-	public TrainTestResults run(String[] args) {
+	public void run(String[] args) {
 
 		// I. Configure Logger
 		CommandLine cmd = parseCommandLine(args);
@@ -102,55 +70,32 @@ public class Controller {
 		((org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false)).reconfigure();
 		logger = LoggerFactory.getLogger(Controller.class);
 		// II. Digest Options
-		if (cmd.hasOption('h')) {
+
+		// III. Has Arguments?
+		if (cmd.getArgs().length < 1) {
+			logger.error("Error:\n\t Please specify a configuration file to use!");
 			printHelp();
-			System.exit(0);
-			// } else if (cmd.hasOption('g')){
-			// LimesGUI.startGUI(new String[0]);
-			// System.exit(0);
-		} else if (cmd.hasOption('s')) {
-			int port = defaultPort;
-			if (cmd.hasOption('p'))
-				port = Integer.parseInt(cmd.getOptionValue('p'));
-			int limit = defaultLimit;
-			if (cmd.hasOption('l'))
-				limit = Integer.parseInt(cmd.getOptionValue('l'));
-			// SimpleServer.startServer(port, limit);
-		} else {
-			// III. Has Arguments?
-			if (cmd.getArgs().length < 1) {
-				logger.error("Error:\n\t Please specify a configuration file to use!");
-				printHelp();
-				System.exit(1);
-			}
-
-			Configuration config = getConfig(cmd);
-			config.setAcceptanceThreshold(0.1);
-
-			for (int i = 0; i < config.maxIterations; i++) {
-
-
-				try {
-					File cachefolder = new File("cache/");
-					FileUtils.deleteDirectory(cachefolder);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				
-				GoldStandardBatchReader gsbr = new GoldStandardBatchReader(config.gold_file, config.log_file);
-				ResultMappings mappings = getMapping(config, gsbr);
-				writeResults(mappings, config);
-				TrainTestResults ttr = new TrainTestResults();
-				ttr.testResult = gsbr.testResult;
-				ttr.trainResult = gsbr.trainResult;
-				return ttr;
-
-			}
+			System.exit(1);
 		}
 
-		return null;
+		Configuration config = getConfig(cmd);
+		config.setAcceptanceThreshold(0.1);
+
+		for (int i = 0; i < config.maxIterations; i++) {
+
+			try {
+				File cachefolder = new File("cache/");
+				FileUtils.deleteDirectory(cachefolder);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			GoldStandardBatchReader gsbr = new GoldStandardBatchReader(config.gold_file, config.log_file);
+			ResultMappings mappings = getMapping(config, gsbr);
+			writeResults(mappings, config);
+
+		}
 
 	}
 
