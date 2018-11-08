@@ -12,15 +12,15 @@ When reading them recall that those descriptions only refer to EAGLE in the comm
 Before you can actually run LIMES, a configuration file needs to be written, which contains major settings like the source and target dataset location and some
 machine learning parameters. The configuration in LIMES v2 corresponds to the definitions made on the
 [Github wiki](http://dice-group.github.io/LIMES/user_manual/configuration_file/) and furthermore extends it with four options:
-	- MAXITERATIONS: The number of active genetic learning cycles (do not interchange with the generations-parameter). 
-	- RESULT_LOGFILE: The path to a textfile for logging the best found rules and their performances.
-	- MAPPINGSFILE: A file for reading all gold-annotations (i.e. the matching entities in NT-format), so that the user doesn't has to give a response actively. 
-	- REPETITIONS: The number of repetitions of one single run; for example useful for stabilizing results or calculating standard deviation.
-	- SIMPLE_FITNESS: LIMES can calculate an actual (i.e. simple) F1-Score or a pseudo F1-score (see section "fitness score" below). If set to false, the pseudo fitness
-	function will be used. This yields better results than the simple F1-score, but must not be used on non-deduplicated dataset. 
-	- ELITISM: This parameter sets the number of best-performing individuals (linkage rules), that should survive an evolution.
-	- ORIGINAL: If set to true, the original LIMES pipeline as implemented in Limes v1.5.1 on [Github](https://github.com/dice-group/LIMES) will be used. All mentioned 
-	parameters won't take effect. 
+- MAXITERATIONS: The number of active genetic learning cycles (do not interchange with the generations-parameter). 
+- RESULT_LOGFILE: The path to a textfile for logging the best found rules and their performances.
+- MAPPINGSFILE: A file for reading all gold-annotations (i.e. the matching entities in NT-format), so that the user doesn't has to give a response actively. 
+- REPETITIONS: The number of repetitions of one single run; for example useful for stabilizing results or calculating standard deviation.
+- SIMPLE_FITNESS: LIMES can calculate an actual (i.e. simple) F1-Score or a pseudo F1-score (see section "fitness score" below). If set to false, the pseudo fitness
+function will be used. This yields better results than the simple F1-score, but must not be used on non-deduplicated dataset. 
+- ELITISM: This parameter sets the number of best-performing individuals (linkage rules), that should survive an evolution.
+- ORIGINAL: If set to true, the original LIMES pipeline as implemented in Limes v1.5.1 on [Github](https://github.com/dice-group/LIMES) will be used. All mentioned 
+parameters won't take effect. 
 
 Running LIMES' active genetic learning module can be achieved in two ways:
 1. Importing the project as an "Existing maven project" into eclipse.
