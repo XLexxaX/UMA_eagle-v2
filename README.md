@@ -48,3 +48,11 @@ original implementation. To make it more consistent with the general notion of a
 The original EAGLE implementation forgets about its current population in each iteration and evolves completely new rules. This represents a random change of the rules, just like
 evolutionary algorithms are meant to work. In the modified version, the population is kept in each iteration and xover and mutation are applied to a previous generation to make 
 it more consistent with other genetic learning algorithms.
+
+# Modified files:
+The following list contains all classes, in which major modifications have been made to LIMES v1.5.1. Those modifications comprise of greater code sections and significantly change the behaviour of the EAGLE algorithm:
+- [Eagle.java](src/main/java/org/aksv/limes/core/ml/algorithm/Eagle.java) - The implementation of the active genetic learning, calling various submodules for f-score calculation and evolution.
+- [GoldStandardBatchReader.java](src/main/java/org/aksv/limes/core/controller/GoldStandardBatchReader.java) - Simulates the user providing gold-answers; also contains precise (actual) F-score calculation
+- [MLPipeline.java](src/main/java/org/aksv/limes/core/ml/algorithm/Eagle.java) - Kind of an overall controller for the execution of the EAGLE algorithm; controls the overall execution of active genetic learning and inquiries to the user.  
+- [MultiCaller.java](src/main/java/org/aksv/limes/core/controller/MultiCaller.java) - An upstream class for calling LIMES multiple times with different configurations.
+A large number of additional modifications have been made; but those are just minor ones and do not significantly change the functionality of LIMES.
