@@ -373,7 +373,7 @@ public class XMLConfigurationReader extends AConfigurationReader {
                 list = xmlDocument.getElementsByTagName(RESULT_LOGFILE);
                 if (list.getLength() > 0) {
                     children = list.item(0).getChildNodes();
-                    configuration.gold_file = (getText(list.item(0)));
+                    configuration.log_file = (getText(list.item(0)));
                 }
                 list = xmlDocument.getElementsByTagName(MAPPINGSFILE);
                 if (list.getLength() > 0) {

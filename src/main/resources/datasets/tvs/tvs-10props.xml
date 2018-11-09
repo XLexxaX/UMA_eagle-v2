@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE LIMES SYSTEM "limes.dtd">
 <LIMES>
-	<MAXITERATIONS>15</MAXITERATIONS>
-	<RESULT_LOGFILE>results.txt</RESULT_LOGFILE>
-	<MAPPINGSFILE>/datasets/headphones/alignment.ttl</MAPPINGSFILE>
-	<REPETITIONS>3</REPETITIONS>
     <PREFIX>
         <NAMESPACE>http://www.w3.org/1999/02/22-rdf-syntax-ns#</NAMESPACE>
         <LABEL>rdf</LABEL>
@@ -107,4 +103,8 @@
           <ENGINE>default</ENGINE>
          </EXECUTION>
     <OUTPUT>NT</OUTPUT>
+	<MAXITERATIONS>15</MAXITERATIONS>
+	<RESULT_LOGFILE>C:/Users/Alexander/Desktop/results.txt</RESULT_LOGFILE>
+	<MAPPINGSFILE>src/main/resources/datasets/tvs/alignment.ttl</MAPPINGSFILE>
+	<REPETITIONS>3</REPETITIONS>
 </LIMES>
