@@ -90,7 +90,6 @@ public class Controller {
 		try {
 			File f = new File(config.log_file);
 			f.createNewFile();
-			new BufferedWriter(new FileWriter(f)).write("");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
