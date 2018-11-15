@@ -33,8 +33,13 @@ import org.slf4j.LoggerFactory;
 
 import com.github.andrewoma.dexx.collection.HashMap;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.function.Function;
 
 /**
@@ -81,8 +86,31 @@ public class Controller {
 		Configuration config = getConfig(cmd);
 		config.setAcceptanceThreshold(0.1);
 
-		for (int i = 0; i < config.maxIterations; i++) {
+		//Try to create the logging file
+		try {
+			File f = new File(config.log_file);
+			f.createNewFile();
+			new BufferedWriter(new FileWriter(f)).write("");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for (int i = 0; i < config.repetitions; i++) {
 
+
+			try {
+				File file = new File(config.log_file);
+				file.createNewFile();
+				
+				String outString = "\n\n\n --- ( " + args[0].split("/")[args[0].split("/").length - 1]
+						+ " | " + (i+1) + " ) ---\n";
+				Files.write(Paths.get(config.log_file), outString.getBytes(),
+						StandardOpenOption.APPEND);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			try {
 				File cachefolder = new File("cache/");
 				FileUtils.deleteDirectory(cachefolder);

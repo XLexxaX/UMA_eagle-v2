@@ -1,5 +1,10 @@
 package org.aksw.limes.core.controller;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+
 public class MultiCaller {
 
 	public void run(String[] args) {
@@ -10,6 +15,10 @@ public class MultiCaller {
 				"B:/Development/limes3/limes/limes-core/src/main/resources/datasets/headphones/headphones-4props.xml",
 				"B:/Development/limes3/limes/limes-core/src/main/resources/datasets/headphones/headphones-10props.xml",
 				"B:/Development/limes3/limes/limes-core/src/main/resources/datasets/headphones/headphones-allprops.xml",
+				"B:/Development/limes3/limes/limes-core/src/main/resources/datasets/tvs/tvs-4props.xml",
+				"B:/Development/limes3/limes/limes-core/src/main/resources/datasets/tvs/tvs-10props.xml",
+				"B:/Development/limes3/limes/limes-core/src/main/resources/datasets/tvs/tvs-40props.xml",
+				"B:/Development/limes3/limes/limes-core/src/main/resources/datasets/tvs/tvs-allprops.xml",
 
 				// "C:/Users/Alexander/Desktop/yelp_zomato_config.xml"//,
 				// "B:/Development/limes3/limes/limes-core/target/classes/datasets/phones/phones-4props-50pop-f-original.xml",
@@ -28,6 +37,14 @@ public class MultiCaller {
 
 		for (int i = 0; i < configFiles.length; i++) {
 
+			try {
+				File cachefolder = new File("cache/");
+				FileUtils.deleteDirectory(cachefolder);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			Controller ctr = new Controller();
 			ctr.run(new String[] { configFiles[i] });
 

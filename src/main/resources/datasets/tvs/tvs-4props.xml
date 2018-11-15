@@ -20,10 +20,10 @@
         <VAR>?y</VAR>
         <PAGESIZE>-1</PAGESIZE>
         <RESTRICTION>?y</RESTRICTION>
-<PROPERTY>rdf:displayresolution</PROPERTY>
 <PROPERTY>rdf:model</PROPERTY>
-<PROPERTY>rdf:productcode</PROPERTY>
-<PROPERTY>rdf:imagecontrast</PROPERTY>
+<PROPERTY>rdf:warc</PROPERTY>
+<PROPERTY>rdf:url</PROPERTY>
+<PROPERTY>rdf:brand</PROPERTY>
         <TYPE>NT</TYPE>
     </SOURCE>
     <TARGET>
@@ -33,9 +33,9 @@
         <PAGESIZE>-1</PAGESIZE>
         <RESTRICTION>?x</RESTRICTION>
 <PROPERTY>rdf:producttype</PROPERTY>
-<PROPERTY>rdf:brand</PROPERTY>
+<PROPERTY>rdf:totalsize</PROPERTY>
+<PROPERTY>rdf:series</PROPERTY>
 <PROPERTY>rdf:model</PROPERTY>
-<PROPERTY>rdf:productgtin</PROPERTY>
         <TYPE>NT</TYPE>
     </TARGET>
         
@@ -91,8 +91,8 @@
           <ENGINE>default</ENGINE>
          </EXECUTION>
     <OUTPUT>NT</OUTPUT>
-	<MAXITERATIONS>15</MAXITERATIONS>
-	<RESULT_LOGFILE>C:/Users/Alexander/Desktop/results.txt</RESULT_LOGFILE>
+	<MAXITERATIONS>50</MAXITERATIONS>
+	<RESULT_LOGFILE>C:/Users/Alexander/Desktop/results2.txt</RESULT_LOGFILE>
 	<MAPPINGSFILE>src/main/resources/datasets/tvs/alignment.ttl</MAPPINGSFILE>
 	<REPETITIONS>3</REPETITIONS>
 </LIMES>

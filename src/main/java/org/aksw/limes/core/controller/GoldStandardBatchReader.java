@@ -1,6 +1,7 @@
 package org.aksw.limes.core.controller;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -32,6 +33,9 @@ public class GoldStandardBatchReader {
 
 	public GoldStandardBatchReader(String inputFile, String log_file) {
 		this.log_file = log_file;
+		
+
+		
 		try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
 			String line = "";
 			HashMap<String, Double> tmp = null;

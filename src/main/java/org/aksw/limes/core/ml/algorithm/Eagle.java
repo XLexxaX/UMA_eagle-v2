@@ -201,7 +201,7 @@ public class Eagle extends ACoreMLAlgorithm {
 			for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
 				try {
 					LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
-					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+					Files.write(Paths.get(configuration.log_file),
 							(ls.getFullExpression().toString() + "-" + ls.getThreshold() + "-" + ls.getQuality()
 									+ "\n").getBytes(),
 							StandardOpenOption.APPEND);
@@ -211,8 +211,8 @@ public class Eagle extends ACoreMLAlgorithm {
 				}
 			}
 			try {
-				Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-						("\n1111111111111\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
+				Files.write(Paths.get(configuration.log_file),
+						("\n1) \n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -243,7 +243,7 @@ public class Eagle extends ACoreMLAlgorithm {
 				for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
 					try {
 						LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
-						Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+						Files.write(Paths.get(configuration.log_file),
 								(ls.getFullExpression().toString() + "-" + ls.getThreshold() + "-" + ls.getQuality()
 										+ "\n").getBytes(),
 								StandardOpenOption.APPEND);
@@ -253,8 +253,8 @@ public class Eagle extends ACoreMLAlgorithm {
 					}
 				}
 				try {
-					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
-							("\n222222222222222\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
+					Files.write(Paths.get(configuration.log_file),
+							("\n2) \n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -296,21 +296,21 @@ public class Eagle extends ACoreMLAlgorithm {
 			GPProgram fittestnow = (GPProgram) gp.getGPPopulation().getGPProgram(0);// (GPProgram)
 																					// prepgen.getPreserved_generation().getGPProgram(0);
 
-			try {
+			/*try {
 				if ((Boolean) Boolean.parseBoolean(getParameter(SIMPLE_FITNESS).toString())) {
 					if (tsC != null && ttC != null)
-						Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"), ("##########:"
+						Files.write(Paths.get(configuration.log_file), ("##########:"
 						+ gsbr.evalF(fitness.getMapping(tsC, ttC, getLinkSpecification(fittestnow))) + "\n").getBytes(),
 						StandardOpenOption.APPEND);// fitness.calculateRawMeasure(fittestnow)
 				} else {
-					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"), ("##########:"
+					Files.write(Paths.get(configuration.log_file), ("##########:"
 					+ fitness.calculateRawMeasure(fittestnow) + "\n").getBytes(),
 					StandardOpenOption.APPEND);// fitness.calculateRawMeasure(fittestnow)
 				}                                                                                                                                                                                                                                                                                                                                 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 
 			allBest = fittestnow;
 			bestSolutions.add(fittestnow);
@@ -346,7 +346,7 @@ public class Eagle extends ACoreMLAlgorithm {
 			for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
 				try {
 					LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
-					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+					Files.write(Paths.get(configuration.log_file),
 							(ls.getFullExpression().toString() + "-" + ls.getThreshold() + "-" + ls.getQuality() + "\n")
 									.getBytes(),
 							StandardOpenOption.APPEND);
@@ -356,7 +356,7 @@ public class Eagle extends ACoreMLAlgorithm {
 				}
 			}
 			try {
-				Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+				Files.write(Paths.get(configuration.log_file),
 						("\n------------\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -596,7 +596,7 @@ public class Eagle extends ACoreMLAlgorithm {
 			for (int j = 0; j < gp.getGPPopulation().getPopSize(); j++) {
 				try {
 					LinkSpecification ls = getLinkSpecification(gp.getGPPopulation().getGPProgram(j));
-					Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+					Files.write(Paths.get(configuration.log_file),
 							(ls.getFullExpression().toString() + "-" + ls.getQuality() + "\n").getBytes(),
 							StandardOpenOption.APPEND);
 				} catch (Exception e) {
@@ -605,7 +605,7 @@ public class Eagle extends ACoreMLAlgorithm {
 				}
 			}
 			try {
-				Files.write(Paths.get("C:/Users/Alexander/Desktop/data_phones/results.txt"),
+				Files.write(Paths.get(configuration.log_file),
 						("\n------------\n".toString() + "\n").getBytes(), StandardOpenOption.APPEND);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

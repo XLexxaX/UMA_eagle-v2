@@ -91,7 +91,7 @@
           <ENGINE>default</ENGINE>
          </EXECUTION>
     <OUTPUT>NT</OUTPUT>
-	<MAXITERATIONS>15</MAXITERATIONS>
+	<MAXITERATIONS>50</MAXITERATIONS>
 	<RESULT_LOGFILE>C:/Users/Alexander/Desktop/results.txt</RESULT_LOGFILE>
 	<MAPPINGSFILE>src/main/resources/datasets/headphones/alignment.ttl</MAPPINGSFILE>
 	<REPETITIONS>3</REPETITIONS>

@@ -617,7 +617,7 @@
          </EXECUTION>
     <OUTPUT>NT</OUTPUT>
 	<MAXITERATIONS>15</MAXITERATIONS>
-	<RESULT_LOGFILE>C:/Users/Alexander/Desktop/results.txt</RESULT_LOGFILE>
+	<RESULT_LOGFILE>C:/Users/Alexander/Desktop/results2.txt</RESULT_LOGFILE>
 	<MAPPINGSFILE>src/main/resources/datasets/tvs/alignment.ttl</MAPPINGSFILE>
-	<REPETITIONS>3</REPETITIONS>
+	<REPETITIONS>2</REPETITIONS>
 </LIMES>

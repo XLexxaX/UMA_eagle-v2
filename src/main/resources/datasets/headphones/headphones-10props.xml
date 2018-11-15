@@ -23,13 +23,13 @@
 <PROPERTY>rdf:warc</PROPERTY>
 <PROPERTY>rdf:url</PROPERTY>
 <PROPERTY>rdf:brand</PROPERTY>
-<PROPERTY>rdf:connectivitytechnology</PROPERTY>
-<PROPERTY>rdf:thd</PROPERTY>
+<PROPERTY>rdf:model</PROPERTY>
 <PROPERTY>rdf:color</PROPERTY>
 <PROPERTY>rdf:headphonesformfactor</PROPERTY>
-<PROPERTY>rdf:frequencyresponse</PROPERTY>
-<PROPERTY>rdf:model</PROPERTY>
-<PROPERTY>rdf:microphonesensitivity</PROPERTY>
+<PROPERTY>rdf:mpn</PROPERTY>
+<PROPERTY>rdf:connectivitytechnology</PROPERTY>
+<PROPERTY>rdf:impedance</PROPERTY>
+<PROPERTY>rdf:sensitivity</PROPERTY>
         <TYPE>NT</TYPE>
     </SOURCE>
     <TARGET>
@@ -39,15 +39,15 @@
         <PAGESIZE>-1</PAGESIZE>
         <RESTRICTION>?x</RESTRICTION>
 <PROPERTY>rdf:producttype</PROPERTY>
-<PROPERTY>rdf:width</PROPERTY>
-<PROPERTY>rdf:depth</PROPERTY>
-<PROPERTY>rdf:height</PROPERTY>
+<PROPERTY>rdf:headphonesformfactor</PROPERTY>
+<PROPERTY>rdf:frequencyresponse</PROPERTY>
 <PROPERTY>rdf:brand</PROPERTY>
+<PROPERTY>rdf:connectivitytechnology</PROPERTY>
+<PROPERTY>rdf:soundoutputmode</PROPERTY>
 <PROPERTY>rdf:model</PROPERTY>
-<PROPERTY>rdf:mpn</PROPERTY>
+<PROPERTY>rdf:impedance</PROPERTY>
 <PROPERTY>rdf:productgtin</PROPERTY>
-<PROPERTY>rdf:aditionalfeatures</PROPERTY>
-<PROPERTY>rdf:mdoel</PROPERTY>
+<PROPERTY>rdf:sensitivity</PROPERTY>
         <TYPE>NT</TYPE>
     </TARGET>
         
@@ -103,7 +103,7 @@
           <ENGINE>default</ENGINE>
          </EXECUTION>
     <OUTPUT>NT</OUTPUT>
-	<MAXITERATIONS>15</MAXITERATIONS>
+	<MAXITERATIONS>50</MAXITERATIONS>
 	<RESULT_LOGFILE>C:/Users/Alexander/Desktop/results.txt</RESULT_LOGFILE>
 	<MAPPINGSFILE>src/main/resources/datasets/headphones/alignment.ttl</MAPPINGSFILE>
 	<REPETITIONS>3</REPETITIONS>
